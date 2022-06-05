@@ -1,0 +1,13 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Score Output Variables
+
+Variable Name    Function     Creator    Label
+
+EM_PREDICTION    PREDICT      Score      Prediction for Adj_Prem
+EM_SEGMENT       TRANSFORM    Score      Segment                
+P_Adj_Prem       PREDICT      Neural     Predicted: Adj_Prem    
+_WARN_           ASSESS       Neural     Warnings               
+b_Adj_Prem       TRANSFORM    MdlComp                           

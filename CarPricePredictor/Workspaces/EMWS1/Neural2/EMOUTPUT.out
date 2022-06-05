@@ -1,0 +1,554 @@
+*------------------------------------------------------------*
+User:                2001231F
+Date:                04,June,2022
+Time:                21:12:15
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+INPUT      INTERVAL          1
+INPUT      NOMINAL           1
+TARGET     INTERVAL          1
+ 
+ 
+ 
+ 
+Predicted and decision variables
+ 
+Type          Variable            Label
+ 
+TARGET       Adj_Prem
+PREDICTED    P_Adj_Prem    Predicted: Adj_Prem
+RESIDUAL     R_Adj_Prem    Residual: Adj_Prem
+ 
+ 
+ 
+ 
+ 
+The NEURAL Procedure
+ 
+Preliminary       Starting         Objective         Number
+ Training          Random           Function           of        Terminating
+    Run             Seed             Value         Iterations     Criteria
+ 
+        1               12345    140816722.1471           10
+        2           290132246    132784091.0126           10
+        3          1679002304    140111726.7736           10
+        4           968533477    141398364.4093           10
+        5          1886791866    143375503.7377           10
+ 
+ 
+ 
+ 
+ 
+The NEURAL Procedure
+ 
+                       Optimization Start
+                      Parameter Estimates
+                                                       Gradient
+                                                      Objective
+  N Parameter                          Estimate        Function
+ 
+  1 Adjusted_Quota_H101                2.877134         1571860
+  2 Adjusted_Quota_H102               -0.748031          400720
+  3 Adjusted_Quota_H103               -0.321680         -606005
+  4 Adjusted_Quota_H104                0.873530        -2165391
+  5 Adjusted_Quota_H105                0.577125          234459
+  6 Adjusted_Quota_H106                8.736557         3419383
+  7 Adjusted_Quota_H107                2.504693         2792518
+  8 Adjusted_Quota_H108               -0.026881         -629772
+  9 Adjusted_Quota_H109                0.606544         -849466
+ 10 Adjusted_Quota_H110                0.785032         -790549
+ 11 Adjusted_Quota_H111               -0.307585          -26940
+ 12 Adjusted_Quota_H112                0.244708        -2570182
+ 13 Adjusted_Quota_H113               -2.007456          103856
+ 14 Adjusted_Quota_H114                0.940699        -2441278
+ 15 Adjusted_Quota_H115               -0.306107          234110
+ 16 Adjusted_Quota_H116                0.318173         -589997
+ 17 Adjusted_Quota_H117                1.496222        -1119178
+ 18 Adjusted_Quota_H118                4.695047         1776457
+ 19 Adjusted_Quota_H119                0.667539         -568124
+ 20 Adjusted_Quota_H120               -0.277669        -1386766
+ 21 vehicle_classCategoryA_H101       -0.155462         2001609
+ 22 vehicle_classCategoryB_H101        0.193544         2396555
+ 23 vehicle_classCategoryC_H101        0.747155         1543613
+ 24 vehicle_classCategoryA_H102       -0.530239          170800
+ 25 vehicle_classCategoryB_H102        0.037440          288137
+ 26 vehicle_classCategoryC_H102       -0.008243           96383
+ 27 vehicle_classCategoryA_H103       -0.048328         -415534
+ 28 vehicle_classCategoryB_H103        0.607587         -381208
+ 29 vehicle_classCategoryC_H103        0.133588      967.219000
+ 30 vehicle_classCategoryA_H104        0.396564          -90062
+ 31 vehicle_classCategoryB_H104        2.420118          -85744
+ 32 vehicle_classCategoryC_H104       -2.333620         2138004
+ 33 vehicle_classCategoryA_H105        0.060528          389690
+ 34 vehicle_classCategoryB_H105        0.154725          389011
+ 35 vehicle_classCategoryC_H105        1.123013          372528
+ 36 vehicle_classCategoryA_H106        0.020267         3698734
+ 37 vehicle_classCategoryB_H106       -5.880835         3476025
+ 38 vehicle_classCategoryC_H106        2.568360         2363996
+ 39 vehicle_classCategoryA_H107        0.170369         2559234
+ 40 vehicle_classCategoryB_H107       -4.600710          574349
+ 41 vehicle_classCategoryC_H107        3.724515        -2744324
+ 42 vehicle_classCategoryA_H108        0.375796         -554364
+ 43 vehicle_classCategoryB_H108       -0.062492         -621871
+ 44 vehicle_classCategoryC_H108        0.687872         -328534
+ 45 vehicle_classCategoryA_H109        1.274355         -369827
+ 46 vehicle_classCategoryB_H109        1.073623         -426938
+ 47 vehicle_classCategoryC_H109        0.885767          990340
+ 48 vehicle_classCategoryA_H110       -0.386944         -531729
+ 49 vehicle_classCategoryB_H110       -1.056190         -733354
+ 50 vehicle_classCategoryC_H110       -0.854947         -501331
+ 51 vehicle_classCategoryA_H111       -0.455242         -176828
+ 52 vehicle_classCategoryB_H111       -0.612980         -131051
+ 53 vehicle_classCategoryC_H111       -3.617166          -57506
+ 54 vehicle_classCategoryA_H112        1.177206        -1590583
+ 55 vehicle_classCategoryB_H112       -1.414840        -2398550
+ 56 vehicle_classCategoryC_H112        0.449759         -832283
+ 57 vehicle_classCategoryA_H113       -0.657822         -614081
+ 58 vehicle_classCategoryB_H113        0.361005        -1358275
+ 59 vehicle_classCategoryC_H113       -1.397336         -474985
+ 60 vehicle_classCategoryA_H114       -0.178568         -231605
+ 61 vehicle_classCategoryB_H114        2.568793         -153454
+ 62 vehicle_classCategoryC_H114       -2.531981         1119841
+ 63 vehicle_classCategoryA_H115       -1.649922           85783
+ 64 vehicle_classCategoryB_H115       -0.508082          149728
+ 65 vehicle_classCategoryC_H115        0.765599     9651.046009
+ 66 vehicle_classCategoryA_H116       -0.302766         -631794
+ 67 vehicle_classCategoryB_H116        0.501940         -435039
+ 68 vehicle_classCategoryC_H116       -0.430063         -159411
+ 69 vehicle_classCategoryA_H117        0.880244         -460767
+ 70 vehicle_classCategoryB_H117       -0.454858         -963577
+ 71 vehicle_classCategoryC_H117       -0.006919         -457537
+ 72 vehicle_classCategoryA_H118        0.750046         2500174
+ 73 vehicle_classCategoryB_H118       -2.789987         2718462
+ 74 vehicle_classCategoryC_H118        0.032773         2747450
+ 75 vehicle_classCategoryA_H119        2.144927    -1441.788247
+ 76 vehicle_classCategoryB_H119        5.993638     -116.732786
+ 77 vehicle_classCategoryC_H119       -0.409508          599058
+ 78 vehicle_classCategoryA_H120        1.831794          -91378
+ 79 vehicle_classCategoryB_H120        2.456074          -27620
+ 80 vehicle_classCategoryC_H120       -0.466774          400310
+ 81 BIAS_H101                          3.170078        -2191492
+ 82 BIAS_H102                          1.514446          485820
+ 83 BIAS_H103                         -0.256254         -153589
+ 84 BIAS_H104                          3.433747         2304564
+ 85 BIAS_H105                          2.839281         -355040
+ 86 BIAS_H106                          2.150579        -3682540
+ 87 BIAS_H107                         -1.331043        -1494260
+ 88 BIAS_H108                          0.724064          -18219
+ 89 BIAS_H109                         -0.051971          207984
+ 90 BIAS_H110                         -0.778220         -251417
+ 91 BIAS_H111                         -2.023102         -134152
+ 92 BIAS_H112                          0.626302          893426
+ 93 BIAS_H113                         -2.111341    -4763.482696
+ 94 BIAS_H114                          2.658861         1345691
+ 95 BIAS_H115                         -0.436380          -46241
+ 96 BIAS_H116                          0.275130          -57759
+ 97 BIAS_H117                         -1.994188        -1817135
+ 98 BIAS_H118                          0.753642         -688969
+ 99 BIAS_H119                          2.352186          597964
+100 BIAS_H120                          0.770533          344090
+101 H101_Adj_Prem                  -6009.748200     -508.346374
+102 H102_Adj_Prem                  -1271.892031      246.556362
+103 H103_Adj_Prem                    613.084997       21.582446
+104 H104_Adj_Prem                   6038.126338     -550.409873
+105 H105_Adj_Prem                  -2558.953604     -342.191049
+106 H106_Adj_Prem                        -10455    -2301.233573
+107 H107_Adj_Prem                  -7991.912534      348.440749
+108 H108_Adj_Prem                    898.807927     -554.599184
+109 H109_Adj_Prem                   2858.684775    -1259.056843
+110 H110_Adj_Prem                   2154.257182      599.276390
+111 H111_Adj_Prem                   9639.334998     1136.805753
+112 H112_Adj_Prem                   3475.448140      -36.766884
+113 H113_Adj_Prem                   3008.662073      817.184025
+114 H114_Adj_Prem                   7379.001771     -904.137911
+115 H115_Adj_Prem                   -485.611018     1423.099762
+116 H116_Adj_Prem                    730.875968     -425.043938
+117 H117_Adj_Prem                   4614.478166     -184.393059
+118 H118_Adj_Prem                  -5401.133474    -1731.099268
+119 H119_Adj_Prem                   6395.862032    -1199.718070
+120 H120_Adj_Prem                   2842.816321    -1184.187537
+121 BIAS_Adj_Prem                         52409     -265.189632
+ 
+Value of Objective Function = 132784091.01
+ 
+ 
+ 
+ 
+ 
+ 
+The NEURAL Procedure
+ 
+Dual Quasi-Newton Optimization
+ 
+ 
+Minimum Iterations                                0
+Maximum Iterations                              150
+Maximum Function Calls                   2147483647
+Maximum CPU Time                              14400
+ABSGCONV Gradient Criterion                 0.00001
+GCONV Gradient Criterion                       1E-8
+ABSFCONV Function Criterion                       0
+FCONV Function Criterion                     0.0001
+FCONV2 Function Criterion                         0
+FSIZE Parameter                                   0
+ABSXCONV Parameter Change Criterion               0
+XCONV Parameter Change Criterion                  0
+XSIZE Parameter                                   0
+ABSCONV Function Criterion             303198.32061
+Line Search Method                                2
+Starting Alpha for Line Search                    1
+Line Search Precision LSPRECISION               0.4
+DAMPSTEP Parameter for Line Search                .
+Singularity Tolerance (SINGULAR)               1E-8
+ 
+Dual Quasi-Newton Optimization
+ 
+Dual Broyden - Fletcher - Goldfarb - Shanno Update (DBFGS)
+ 
+Parameter Estimates             121
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       132784091.01
+Max Abs Gradient Element                 3698733.6852
+ 
+ 
+                                                                 Objective     Max Abs                Slope of
+                     Function         Active        Objective     Function    Gradient       Step       Search
+Iter     Restarts       Calls    Constraints         Function       Change     Element       Size    Direction
+ 
+   1            0          13              0        132030975       753116     1934739    8.18E-7      -185E10
+   2            0          17              0        131223019       807957     2262349    0.00485      -3.23E8
+   3            0          21              0        130954325       268693     2140536    0.00147      -3.72E8
+   4            0          24              0        127291206      3663119     4272240     0.0145      -3.18E8
+   5            0          28              0        126427393       863814     4593452    0.00258      -5.23E8
+   6            0          31              0        126042451       384942     5913593     0.0102      -2.26E8
+   7            0          34              0        125460608       581843     4649932     0.0154      -8.44E7
+   8            0          37              0        124490172       970436     4667207     0.0107       -1.6E8
+   9            0          43              0        123585168       905004     3896726     0.0153      -1.03E8
+  10            0          46              0        121962273      1622895     2866157     0.0479      -6.94E7
+  11            0          49              0        121365614       596659     2535308     0.0179      -8.98E7
+  12            0          52              0        120887630       477984     1746096     0.0134      -6.19E7
+  13            0          55              0        120538635       348994     1260872     0.0219      -2.63E7
+  14            0          58              0        120307796       230839     1263551     0.0174      -2.11E7
+  15            0          61              0        119830164       477632     3431140     0.0451      -2.06E7
+  16            0          64              0        119420294       409871     1904953     0.0179      -3.18E7
+  17            0          67              0        118786420       633874      985865     0.0314      -2.96E7
+  18            0          70              0        118362473       423948     2047100     0.0213      -2.77E7
+  19            0          73              0        118040451       322022     1663030     0.0128      -3.57E7
+  20            0          75              0        117642264       398187     2429181      0.100      -1.56E7
+  21            0          78              0        117471360       170904     1430643     0.0155       -3.3E7
+  22            0          81              0        117176217       295143     2425541     0.0542      -1.04E7
+  23            0          84              0        116676126       500091      941717     0.0491      -2.16E7
+  24            0          86              0        116263131       412995     3729918      0.100      -1.71E7
+  25            0          88              0        115380208       882923     3745642      0.100      -2.34E7
+  26            0          91              0        115046070       334138     1878486     0.0240      -2.57E7
+  27            0          93              0        114530893       515177     1572811      0.100      -9.03E6
+  28            0          96              0        114151665       379228     2004864     0.0523      -1.24E7
+  29            0          98              0        113584459       567206     1389257      0.100      -1.27E7
+  30            0         101              0        113315566       268894     1277659     0.0655      -8.38E6
+  31            0         104              0        113078408       237158     1046333     0.0413      -1.14E7
+  32            0         106              0        112614373       464035     1080771      0.100      -1.09E7
+  33            0         108              0        112278602       335771     1464315      0.273      -4.25E6
+  34            0         110              0        111935448       343153     2016641      0.128      -6.54E6
+  35            0         112              0        111349885       585564     2273994      0.100      -1.09E7
+  36            0         114              0        110935176       414709     2476008      0.147      -9.93E6
+  37            0         116              0        110306709       628467     2658192      0.136      -7.65E6
+  38            0         118              0        109354385       952324     2597044      0.115      -1.36E7
+  39            0         120              0        108397270       957115     1253599      0.394      -6.04E6
+  40            0         122              0        107699309       697961     1445239      0.505      -4.74E6
+  41            0         125              0        107442938       256371      757562      0.406      -2.01E6
+  42            0         129              0        106706195       736743     1006470      0.506      -2.92E6
+  43            0         132              0        105980998       725197      865551      0.443       -2.3E6
+  44            0         138              0        105886910      94088.3      811173     0.0312      -4.72E6
+  45            0         142              0        105422783       464127      987605      0.563      -1.78E6
+  46            0         145              0        105238223       184559     1337365      0.177      -2.91E6
+  47            0         147              0        104949112       289111      722077      0.239      -1.93E6
+  48            0         150              0        104725247       223865      783832      0.244       -1.6E6
+  49            0         152              0        104409801       315447      420302      0.821      -681375
+  50            0         154              0        104066841       342959      624003      0.916      -861390
+  51            0         156              0        103868240       198601      516385      1.184      -724381
+  52            0         158              0        103674772       193468      625954      0.389      -1.28E6
+  53            0         160              0        103369502       305270      400867      0.613      -789385
+  54            0         163              0        103151422       218079      306357      0.631      -631287
+  55            0         166              0        103013050       138373      293233      1.062      -220628
+  56            0         169              0        102917195      95854.3      229544      0.503      -280439
+  57            0         171              0        102841137      76058.1      333878      1.169      -204981
+  58            0         173              0        102819339      21798.1      422777      2.111       -90084
+  59            0         177              0        102756187      63151.8      254506      0.819      -153335
+  60            0         180              0        102722773      33414.4      277555      0.701       -85534
+  61            1         188              0        102699604      23168.6      151335    0.00002      -2.72E9
+  62            1         191              0        102687240      12364.2      121094     0.0297      -823528
+  63            1         194              0        102681137       6103.6     93362.6     0.0220      -561632
+  64            1         197              0        102676403       4733.4      105728     0.0311      -301995
+  65            1         200              0        102668862       7540.9     96471.4     0.0401      -373807
+  66            1         203              0        102660987       7875.4     55898.2     0.0503      -300019
+  67            1         205              0        102656889       4097.9     79016.8      0.109      -181022
+  68            1         208              0        102653836       3053.3     73022.6     0.0413      -147234
+  69            1         210              0        102650568       3267.3     91547.2      0.157       -48553
+  70            1         212              0        102647368       3200.1     63780.8      0.206       -39703
+  71            1         214              0        102645159       2208.8     40159.7      0.127       -63079
+  72            1         217              0        102643862       1297.7     26697.0     0.0771       -33816
+ 
+                                            Optimization Results
+ 
+Iterations                                         72  Function Calls                                    219
+Gradient Calls                                     80  Active Constraints                                  0
+Objective Function                       102643861.65  Max Abs Gradient Element                 26697.007824
+Slope of Search Direction                -33816.43479
+ 
+Convergence criterion (FCONV=0.0001) satisfied.
+ 
+NOTE: At least one element of the gradient is greater than 1e-3.
+ 
+ 
+ 
+ 
+ 
+ 
+The NEURAL Procedure
+ 
+                      Optimization Results
+                      Parameter Estimates
+                                                       Gradient
+                                                      Objective
+  N Parameter                          Estimate        Function
+ 
+  1 Adjusted_Quota_H101               57.858920    -3901.398903
+  2 Adjusted_Quota_H102              -15.485445    -3617.242718
+  3 Adjusted_Quota_H103               -1.519689      -55.446290
+  4 Adjusted_Quota_H104               17.406068           23310
+  5 Adjusted_Quota_H105               -4.360271     1979.543311
+  6 Adjusted_Quota_H106               75.028503    -1970.535989
+  7 Adjusted_Quota_H107               62.532036    -8357.856480
+  8 Adjusted_Quota_H108               11.594786     1429.111911
+  9 Adjusted_Quota_H109               19.615318       -0.633244
+ 10 Adjusted_Quota_H110               43.559730    -1460.408859
+ 11 Adjusted_Quota_H111               -0.065433      -21.492697
+ 12 Adjusted_Quota_H112                7.259174    -6267.428706
+ 13 Adjusted_Quota_H113             -131.822270    -8886.822685
+ 14 Adjusted_Quota_H114               34.836317     8648.550143
+ 15 Adjusted_Quota_H115              -14.240495     1452.121156
+ 16 Adjusted_Quota_H116               17.240525       15.666178
+ 17 Adjusted_Quota_H117               51.017507     7140.187959
+ 18 Adjusted_Quota_H118               75.973485    -5409.474711
+ 19 Adjusted_Quota_H119                6.238326      548.379718
+ 20 Adjusted_Quota_H120               44.299399    -5543.850597
+ 21 vehicle_classCategoryA_H101       22.696564    -6024.357555
+ 22 vehicle_classCategoryB_H101      -16.214181    -7001.099443
+ 23 vehicle_classCategoryC_H101       -6.065596      145.208500
+ 24 vehicle_classCategoryA_H102       -0.996024      638.829931
+ 25 vehicle_classCategoryB_H102       -2.217184    -6239.379835
+ 26 vehicle_classCategoryC_H102       22.631579        7.512534
+ 27 vehicle_classCategoryA_H103       20.869044    2.9560321E-8
+ 28 vehicle_classCategoryB_H103       -1.184666      105.622672
+ 29 vehicle_classCategoryC_H103       -6.278924       -0.019838
+ 30 vehicle_classCategoryA_H104       -2.544169    -1552.895323
+ 31 vehicle_classCategoryB_H104       -1.040429    -1561.359527
+ 32 vehicle_classCategoryC_H104        2.730805          -15672
+ 33 vehicle_classCategoryA_H105        6.556573     2168.269845
+ 34 vehicle_classCategoryB_H105        8.913597        0.003896
+ 35 vehicle_classCategoryC_H105        5.307747        0.009279
+ 36 vehicle_classCategoryA_H106        1.837578           14031
+ 37 vehicle_classCategoryB_H106      -61.119313     9109.290515
+ 38 vehicle_classCategoryC_H106       36.031724           17962
+ 39 vehicle_classCategoryA_H107      -22.508273     6717.281131
+ 40 vehicle_classCategoryB_H107      -95.947437     4643.530817
+ 41 vehicle_classCategoryC_H107       84.882841           15493
+ 42 vehicle_classCategoryA_H108      -16.437431      454.603247
+ 43 vehicle_classCategoryB_H108      -26.616119       -0.188779
+ 44 vehicle_classCategoryC_H108        9.669979    -3982.648336
+ 45 vehicle_classCategoryA_H109       28.515304       -5.029604
+ 46 vehicle_classCategoryB_H109       24.074148       -5.029604
+ 47 vehicle_classCategoryC_H109       -1.030151       -5.029604
+ 48 vehicle_classCategoryA_H110      -44.957170     1214.399557
+ 49 vehicle_classCategoryB_H110        5.860282    -2489.529546
+ 50 vehicle_classCategoryC_H110      -44.848802     -401.500334
+ 51 vehicle_classCategoryA_H111       -2.723390      -38.761562
+ 52 vehicle_classCategoryB_H111       -9.570536      -38.761596
+ 53 vehicle_classCategoryC_H111       -4.544630      -38.761597
+ 54 vehicle_classCategoryA_H112       14.151265       -1.409642
+ 55 vehicle_classCategoryB_H112       -9.938325     -990.111618
+ 56 vehicle_classCategoryC_H112       10.436389    -9149.777870
+ 57 vehicle_classCategoryA_H113       -8.351014           13016
+ 58 vehicle_classCategoryB_H113        2.185871           11113
+ 59 vehicle_classCategoryC_H113      -29.978655           26697
+ 60 vehicle_classCategoryA_H114       -0.245119       -3.954703
+ 61 vehicle_classCategoryB_H114       -1.544837     -361.953567
+ 62 vehicle_classCategoryC_H114       -8.355112          -12704
+ 63 vehicle_classCategoryA_H115      -10.812384      460.380820
+ 64 vehicle_classCategoryB_H115       39.907556               0
+ 65 vehicle_classCategoryC_H115       12.530652        0.001854
+ 66 vehicle_classCategoryA_H116       -2.331825       18.406776
+ 67 vehicle_classCategoryB_H116      -36.317318    -3.938313E-8
+ 68 vehicle_classCategoryC_H116      -10.830297    -4.049935E-8
+ 69 vehicle_classCategoryA_H117      -40.757497    -0.000024403
+ 70 vehicle_classCategoryB_H117      -39.220930     3799.812115
+ 71 vehicle_classCategoryC_H117       60.535382    -5152.556652
+ 72 vehicle_classCategoryA_H118        0.636607    -4584.350311
+ 73 vehicle_classCategoryB_H118      -77.578768    -4689.931338
+ 74 vehicle_classCategoryC_H118       -0.589659    -6113.657479
+ 75 vehicle_classCategoryA_H119        6.384158      -30.216120
+ 76 vehicle_classCategoryB_H119        5.934696      271.644928
+ 77 vehicle_classCategoryC_H119       -5.593477     1010.274016
+ 78 vehicle_classCategoryA_H120        4.527964     3187.409225
+ 79 vehicle_classCategoryB_H120       -3.003267    -6764.267277
+ 80 vehicle_classCategoryC_H120       22.945946     2935.025900
+ 81 BIAS_H101                         41.926681           11217
+ 82 BIAS_H102                         22.473102    -5623.087506
+ 83 BIAS_H103                         -3.199680      105.602835
+ 84 BIAS_H104                         16.108591          -14337
+ 85 BIAS_H105                          6.082763     2168.282222
+ 86 BIAS_H106                         17.014272     9909.847206
+ 87 BIAS_H107                        -26.108545     8279.852092
+ 88 BIAS_H108                          1.580242    -3528.233868
+ 89 BIAS_H109                         48.440804        5.029604
+ 90 BIAS_H110                        -64.482866      -70.628988
+ 91 BIAS_H111                        -10.297461       38.761629
+ 92 BIAS_H112                         -4.383617          -10141
+ 93 BIAS_H113                        -63.759858     6161.508113
+ 94 BIAS_H114                         28.575287          -13054
+ 95 BIAS_H115                          8.040210      460.382674
+ 96 BIAS_H116                        -19.858977       18.406777
+ 97 BIAS_H117                        -25.922728    -1352.744446
+ 98 BIAS_H118                        -11.368664     9066.690789
+ 99 BIAS_H119                          1.346413     1271.122514
+100 BIAS_H120                         20.583550     -641.793277
+101 H101_Adj_Prem                  -6010.019301      685.313653
+102 H102_Adj_Prem                  -1272.604839      566.214977
+103 H103_Adj_Prem                    613.625905     -250.881527
+104 H104_Adj_Prem                   6037.761405      666.449221
+105 H105_Adj_Prem                  -2558.815060     -400.153195
+106 H106_Adj_Prem                        -10455     -267.677939
+107 H107_Adj_Prem                  -7991.322511     -960.488413
+108 H108_Adj_Prem                    899.167534       10.970531
+109 H109_Adj_Prem                   2858.780871     -395.473863
+110 H110_Adj_Prem                   2155.124098     -623.060046
+111 H111_Adj_Prem                   9639.226479      395.472732
+112 H112_Adj_Prem                   3476.217033     -721.538664
+113 H113_Adj_Prem                   3008.755966      152.959330
+114 H114_Adj_Prem                   7378.670989      726.927337
+115 H115_Adj_Prem                   -485.676654     -637.805242
+116 H116_Adj_Prem                    731.099714      499.753612
+117 H117_Adj_Prem                   4615.442675     -978.679712
+118 H118_Adj_Prem                  -5401.090074      752.794249
+119 H119_Adj_Prem                   6395.772997       86.735332
+120 H120_Adj_Prem                   2842.919711     -454.325232
+121 BIAS_Adj_Prem                         52409      643.142773
+ 
+Value of Objective Function = 102643861.65
+ 
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Fit Statistics
+ 
+Target=Adj_Prem Target Label=' '
+ 
+   Fit
+Statistics    Statistics Label                            Train              Test
+ 
+ _DFT_        Total Degrees of Freedom                   409.00               .
+ _DFE_        Degrees of Freedom for Error               288.00               .
+ _DFM_        Model Degrees of Freedom                   121.00               .
+ _NW_         Number of Estimated Weights                121.00               .
+ _AIC_        Akaike's Information Criterion            7892.03               .
+ _SBC_        Schwarz's Bayesian Criterion              8377.69               .
+ _ASE_        Average Squared Error                132784091.01      180823305.40
+ _MAX_        Maximum Absolute Error                   35283.07          50328.50
+ _DIV_        Divisor for ASE                            409.00            175.00
+ _NOBS_       Sum of Frequencies                         409.00            175.00
+ _RASE_       Root Average Squared Error               11523.20          13447.06
+ _SSE_        Sum of Squared Errors              54308693224.16    31644078444.66
+ _SUMW_       Sum of Case Weights Times Freq             409.00            175.00
+ _FPE_        Final Prediction Error               244359611.93               .
+ _MSE_        Mean Squared Error                   188571851.47      180823305.40
+ _RFPE_       Root Final Prediction Error              15632.01               .
+ _RMSE_       Root Mean Squared Error                  13732.15          13447.06
+ _AVERR_      Average Error Function               132784091.01      180823305.40
+ _ERR_        Error Function                     54308693224.16    31644078444.66
+ _MISC_       Misclassification Rate                        .                 .
+ _WRONG_      Number of Wrong Classifications               .                 .
+ 
+ 
+ 
+ 
+Assessment Score Rankings
+ 
+Data Role=TRAIN Target Variable=Adj_Prem Target Label=' '
+ 
+           Number of       Mean         Mean
+Depth    Observations     Target     Predicted
+ 
+   5          21         80623.02     80566.84
+  10          20         73911.73     75456.38
+  15          22         77541.86     72408.30
+  20          19         68392.84     71731.36
+  25          22         64129.30     69166.22
+  30          19         58531.45     59486.31
+  35          21         50613.02     52548.36
+  40          20         50794.38     48721.65
+  45          21         45982.29     46939.67
+  50          20         46163.98     46329.97
+  55          20         50189.63     45624.66
+  60          21         47596.67     44976.65
+  65          20         51999.28     44589.15
+  70          21         45829.93     44294.38
+  75          20         35915.80     43899.25
+  80          21         42399.19     43283.72
+  85          20         42420.75     42534.48
+  90          21         43893.00     41781.40
+  95          20         32904.03     39343.94
+ 100          20         36271.88     30061.37
+ 
+ 
+ 
+ 
+Assessment Score Distribution
+ 
+Data Role=TRAIN Target Variable=Adj_Prem Target Label=' '
+ 
+                            Mean         Mean        Number of       Model
+ Range for Predicted       Target     Predicted    Observations      Score
+ 
+81562.271 -  84621.259    82776.15     83072.74          10        83091.77
+78503.283 -  81562.271    69694.75     79425.31           4        80032.78
+75444.294 -  78503.283    77341.82     76527.82          19        76973.79
+72385.306 -  75444.294    74563.14     73974.21          14        73914.80
+69326.317 -  72385.306    70994.88     71748.63          47        70855.81
+66267.329 -  69326.317    59227.07     67411.14           7        67796.82
+63208.341 -  66267.329    70763.10     64882.45           5        64737.83
+60149.352 -  63208.341    53938.17     61114.93           6        61678.85
+57090.364 -  60149.352    59891.67     58291.25           9        58619.86
+54031.375 -  57090.364    56107.71     54776.47           7        55560.87
+50972.387 -  54031.375    51666.68     52586.00          11        52501.88
+47913.399 -  50972.387    47478.65     49447.51          20        49442.89
+44854.410 -  47913.399    47932.87     46122.03          83        46383.90
+41795.422 -  44854.410    44039.65     43613.79         116        43324.92
+38736.434 -  41795.422    37213.24     40587.53          25        40265.93
+35677.445 -  38736.434    31675.38     37747.11           8        37206.94
+32618.457 -  35677.445    34879.38     33344.43           4        34147.95
+29559.468 -  32618.457    41160.60     31406.36           5        31088.96
+26500.480 -  29559.468    37265.50     29377.76           3        28029.97
+23441.492 -  26500.480    34859.75     24992.18           6        24970.99

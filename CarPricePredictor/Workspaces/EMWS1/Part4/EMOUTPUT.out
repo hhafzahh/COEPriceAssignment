@@ -1,0 +1,70 @@
+*------------------------------------------------------------*
+User:                2001231F
+Date:                04,June,2022
+Time:                21:27:56
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+INPUT      INTERVAL          3
+INPUT      NOMINAL           2
+TARGET     INTERVAL          1
+TIMEID     INTERVAL          1
+ 
+ 
+ 
+ 
+Partition Summary
+ 
+                                   Number of
+Type           Data Set          Observations
+ 
+DATA     EMWS1.FIMPORT4_train        1168
+TRAIN    EMWS1.Part4_TRAIN            818
+TEST     EMWS1.Part4_TEST             350
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Summary Statistics for Interval Targets
+ 
+Data=DATA
+ 
+                                                             Number of                     Standard
+Variable         Maximum            Mean         Minimum    Observations    Missing       Deviation    Label
+ 
+premium            99999    52499.666096           18502            1168       0       18109.668566
+ 
+ 
+Data=TEST
+ 
+                                                             Number of                     Standard
+Variable         Maximum            Mean         Minimum    Observations    Missing       Deviation    Label
+ 
+premium            99999    53043.405714           19001             350       0        18582.94332
+ 
+ 
+Data=TRAIN
+ 
+                                                             Number of                     Standard
+Variable         Maximum            Mean         Minimum    Observations    Missing       Deviation    Label
+ 
+premium            99010     52267.01467           18502             818       0       17909.844238

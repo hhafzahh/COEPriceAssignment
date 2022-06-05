@@ -1,0 +1,150 @@
+*------------------------------------------------------------*
+* Training Log
+Date:                04,June,2022
+Time:                23:09:19
+*------------------------------------------------------------*
+10866  proc freq data=EMWS2.Ensmbl_VariableSet noprint;
+10867  table ROLE*LEVEL/out=WORK.EnsmblMETA;
+10868  run;
+
+NOTE: There were 3 observations read from the data set EMWS2.ENSMBL_VARIABLESET.
+NOTE: The data set WORK.ENSMBLMETA has 3 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+10869  proc print data=WORK.EnsmblMETA label noobs;
+10870  var ROLE LEVEL COUNT;
+10871  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+10872  title9 ' ';
+10873  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+10874  run;
+
+NOTE: There were 3 observations read from the data set WORK.ENSMBLMETA.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+10875  title10;
+
+10876  %let EMNORLEN = %DMNORLEN;
+EMWS2.Reg_TRAIN EMWS2.Reg_TRAIN 
+EMWS2.Reg_TRAIN EMWS2.Reg_TRAIN EMWS2 Reg_TRAIN 
+EMWS2.Reg_TRAIN EMWS2.Reg_TRAIN 
+EMWS2.Reg_TRAIN EMWS2.Reg_TRAIN EMWS2 Reg_TRAIN 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL setMetaData >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL setMetaData >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >> 
+"No decisions defined for target "Adj_Prem"." 
+10877  proc print data = EMWS2.Reg_Adj_Prem_DM noobs label;
+10878  var _type_ variable label;
+10879  where _type_ ^in('MATRIX', 'DECISION', 'TRAINPRIOR', 'DATAPRIOR', 'DECPRIOR');
+10880  label _TYPE_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_type_vlabel,     NOQUOTE))" VARIABLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel, NOQUOTE))";
+10881  title9 ' ';
+10882  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_predDecVars_title  , NOQUOTE))";
+10883  run;
+
+NOTE: There were 3 observations read from the data set EMWS2.REG_ADJ_PREM_DM.
+      WHERE _type_ not in ('DATAPRIOR', 'DECISION', 'DECPRIOR', 'MATRIX', 'TRAINPRIOR');
+NOTE: The PROCEDURE PRINT printed page 2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+10884  title10;
+
+10885  %let groupid =;
+10886  %let endGroupid =;
+10887  data _null_;
+10888  set EMWS2.Reg_EMINFO;
+10889  where key in('ENDGROUP', 'GROUPINFO', 'BOOSTINFO', 'BAGINFO', 'TARGETINFO', 'INDEXINFO');
+10890  if key = 'ENDGROUP' then call symput('endGroupId', DATA);
+10891  else call symput('groupId', DATA);
+10892  run;
+
+NOTE: There were 0 observations read from the data set EMWS2.REG_EMINFO.
+      WHERE key in ('BAGINFO', 'BOOSTINFO', 'ENDGROUP', 'GROUPINFO', 'INDEXINFO', 'TARGETINFO');
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+10893  %let groupid =;
+10894  %let endGroupid =;
+10895  data _null_;
+10896  set EMWS2.Neural_EMINFO;
+10897  where key in('ENDGROUP', 'GROUPINFO', 'BOOSTINFO', 'BAGINFO', 'TARGETINFO', 'INDEXINFO');
+10898  if key = 'ENDGROUP' then call symput('endGroupId', DATA);
+10899  else call symput('groupId', DATA);
+10900  run;
+
+NOTE: There were 0 observations read from the data set EMWS2.NEURAL_EMINFO.
+      WHERE key in ('BAGINFO', 'BOOSTINFO', 'ENDGROUP', 'GROUPINFO', 'INDEXINFO', 'TARGETINFO');
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+10901  %let groupid =;
+10902  %let endGroupid =;
+10903  data _null_;
+10904  set EMWS2.Neural2_EMINFO;
+10905  where key in('ENDGROUP', 'GROUPINFO', 'BOOSTINFO', 'BAGINFO', 'TARGETINFO', 'INDEXINFO');
+10906  if key = 'ENDGROUP' then call symput('endGroupId', DATA);
+10907  else call symput('groupId', DATA);
+10908  run;
+
+NOTE: There were 0 observations read from the data set EMWS2.NEURAL2_EMINFO.
+      WHERE key in ('BAGINFO', 'BOOSTINFO', 'ENDGROUP', 'GROUPINFO', 'INDEXINFO', 'TARGETINFO');
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+10909  data WORK.Ensmbl;
+10910  length NodeId $32 Model $64;
+10911  label Nodeid = "%sysfunc(sasmsg(sashelp.dmine, rpt_nodeId_vlabel,  NOQUOTE))" Model = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeltype,      NOQUOTE))";
+10912  nodeid="REG";
+10913  model="Regression";
+10914  output;
+10915  nodeid="NEURAL";
+10916  model="Neural";
+10917  output;
+10918  nodeid="NEURAL2";
+10919  model="Neural";
+10920  output;
+10921  ;
+10922  run;
+
+NOTE: The data set WORK.ENSMBL has 3 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+10923  title;
+10924  proc print data=WORK.Ensmbl label noobs;
+10925  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_combinemodels_title,  NOQUOTE))";
+10926  title10 "Probability Function: Average";
+10927  run;
+
+NOTE: There were 3 observations read from the data set WORK.ENSMBL.
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+10928  title9;
+10929  title10;
+
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.

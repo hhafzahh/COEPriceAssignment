@@ -1,0 +1,115 @@
+*------------------------------------------------------------*
+* Score Log
+Date:                04,June,2022
+Time:                21:20:02
+*------------------------------------------------------------*
+11215  filename emflow "C:\Users\2001231F\Desktop\Predictive\Workspaces\EMWS1\Reg3\EMFLOWSCORE.sas";
+11216  *------------------------------------------------------------*;
+11217  * Reg3: Scoring DATA data;
+11218  *------------------------------------------------------------*;
+11219  data EMWS1.Reg3_TRAIN
+11220  / view=EMWS1.Reg3_TRAIN
+11221  ;
+11222  set EMWS1.Part3_TRAIN
+11223  ;
+11224  %inc emflow;
+11308  run;
+
+NOTE: DATA STEP view saved on file EMWS1.REG3_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11309  quit;
+11310  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+11311  filename emflow "C:\Users\2001231F\Desktop\Predictive\Workspaces\EMWS1\Reg3\EMFLOWSCORE.sas";
+11312  *------------------------------------------------------------*;
+11313  * Reg3: Scoring TEST data;
+11314  *------------------------------------------------------------*;
+11315  data EMWS1.Reg3_TEST
+11316  / view=EMWS1.Reg3_TEST
+11317  ;
+11318  set EMWS1.Part3_TEST
+11319  ;
+11320  %inc emflow;
+11404  run;
+
+NOTE: DATA STEP view saved on file EMWS1.REG3_TEST.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11405  quit;
+11406  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+11407  *------------------------------------------------------------*;
+11408  * Reg3: Computing metadata for TRAIN data;
+11409  *------------------------------------------------------------*;
+
+NOTE: View EMWS1.REG3_TRAIN.VIEW used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+11757  data WORK.MODELTEMP_INFO;
+11758  set EMWS1.Reg3_EMINFO;
+11759  where DATA='Reg3' and KEY ^in('DECDATA', 'DECMETA', 'IMPORTANCE', 'MODEL');
+11760  run;
+
+NOTE: There were 0 observations read from the data set EMWS1.REG3_EMINFO.
+      WHERE (DATA='Reg3') and KEY not in ('DECDATA', 'DECMETA', 'IMPORTANCE', 'MODEL');
+NOTE: The data set WORK.MODELTEMP_INFO has 0 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11761  data EMWS1.Reg3_EMINFO;
+11762  length TARGET KEY $32 DATA $43;
+11763  input TARGET KEY DATA $;
+11764  cards;
+
+NOTE: The data set EMWS1.REG3_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11768  run;
+11769  data EMWS1.Reg3_EMINFO;
+11770  set EMWS1.Reg3_EMINFO WORK.MODELTEMP_INFO;
+11771  run;
+
+NOTE: There were 3 observations read from the data set EMWS1.REG3_EMINFO.
+NOTE: There were 0 observations read from the data set WORK.MODELTEMP_INFO.
+NOTE: The data set EMWS1.REG3_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11772  proc sort data = EMWS1.Reg3_EMINFO NOTHREADS;
+11773  by TARGET KEY;
+11774  run;
+
+NOTE: There were 3 observations read from the data set EMWS1.REG3_EMINFO.
+NOTE: The data set EMWS1.REG3_EMINFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: View EMWS1.REG3_TRAIN.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+NOTE: View EMWS1.REG3_TEST.VIEW used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      

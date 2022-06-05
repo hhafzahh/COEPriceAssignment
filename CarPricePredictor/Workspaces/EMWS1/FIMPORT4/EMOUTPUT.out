@@ -1,0 +1,87 @@
+*------------------------------------------------------------*
+User:                2001231F
+Date:                04,June,2022
+Time:                21:27:52
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+INPUT      INTERVAL          3
+INPUT      NOMINAL           2
+TARGET     INTERVAL          1
+TIMEID     INTERVAL          1
+ 
+ 
+ 
+ 
+ 
+The CONTENTS Procedure
+ 
+Data Set Name        EMWS1.FIMPORT4_DATA           Observations          1168
+Member Type          DATA                          Variables             7
+Engine               V9                            Indexes               0
+Created              04/06/2022 21:27:50           Observation Length    64
+Last Modified        04/06/2022 21:27:50           Deleted Observations  0
+Protection                                         Compressed            NO
+Data Set Type                                      Sorted                NO
+Label
+Data Representation  WINDOWS_64
+Encoding             wlatin1  Western (Windows)
+ 
+ 
+                                   Engine/Host Dependent Information
+ 
+Data Set Page Size          65536
+Number of Data Set Pages    2
+First Data Page             1
+Max Obs per Page            1021
+Obs in First Data Page      993
+Number of Data Set Repairs  0
+ExtendObsCounter            YES
+Filename                    C:\Users\2001231F\Desktop\Predictive\Workspaces\EMWS1\fimport4_data.sas7bdat
+Release Created             9.0401M3
+Host Created                X64_8PRO
+ 
+ 
+         Alphabetic List of Variables and Attributes
+ 
+#    Variable         Type    Len    Format       Informat
+ 
+2    bidding_no       Num       8    BEST12.      BEST32.
+6    bids_received    Num       8    BEST12.      BEST32.
+5    bids_success     Num       8    BEST12.      BEST32.
+1    month            Num       8    DATETIME.    ANYDTDTM40.
+7    premium          Num       8    BEST12.      BEST32.
+4    quota            Num       8    BEST12.      BEST32.
+3    vehicle_class    Char     10    $10.         $10.
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Exported Attributes for TRAIN Port
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+INPUT      INTERVAL          3
+INPUT      NOMINAL           2
+TARGET     INTERVAL          1
+TIMEID     INTERVAL          1

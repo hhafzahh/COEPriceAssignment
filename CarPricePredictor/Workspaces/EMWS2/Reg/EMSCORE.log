@@ -1,0 +1,90 @@
+*------------------------------------------------------------*
+* Score Log
+Date:                04,June,2022
+Time:                23:09:14
+*------------------------------------------------------------*
+11216  filename emflow "C:\Users\2001231F\Desktop\Predictive\Workspaces\EMWS2\Reg\EMFLOWSCORE.sas";
+11217  *------------------------------------------------------------*;
+11218  * Reg: Scoring DATA data;
+11219  *------------------------------------------------------------*;
+11220  data EMWS2.Reg_TRAIN
+11221  / view=EMWS2.Reg_TRAIN
+11222  ;
+11223  set EMWS2.Part_TRAIN
+11224  ;
+11225  %inc emflow;
+11309  run;
+
+NOTE: DATA STEP view saved on file EMWS2.REG_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11310  quit;
+11311  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+11312  filename emflow "C:\Users\2001231F\Desktop\Predictive\Workspaces\EMWS2\Reg\EMFLOWSCORE.sas";
+11313  *------------------------------------------------------------*;
+11314  * Reg: Scoring TEST data;
+11315  *------------------------------------------------------------*;
+11316  data EMWS2.Reg_TEST
+11317  / view=EMWS2.Reg_TEST
+11318  ;
+11319  set EMWS2.Part_TEST
+11320  ;
+11321  %inc emflow;
+11405  run;
+
+NOTE: DATA STEP view saved on file EMWS2.REG_TEST.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11406  quit;
+11407  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+11408  *------------------------------------------------------------*;
+11409  * Reg: Computing metadata for TRAIN data;
+11410  *------------------------------------------------------------*;
+
+NOTE: View EMWS2.REG_TRAIN.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+11755  data EMWS2.Reg_EMINFO;
+11756  length TARGET KEY $32 DATA $43;
+11757  input TARGET KEY DATA $;
+11758  cards;
+
+NOTE: The data set EMWS2.REG_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11762  run;
+11763  proc sort data = EMWS2.Reg_EMINFO NOTHREADS;
+11764  by TARGET KEY;
+11765  run;
+
+NOTE: There were 3 observations read from the data set EMWS2.REG_EMINFO.
+NOTE: The data set EMWS2.REG_EMINFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: View EMWS2.REG_TRAIN.VIEW used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+NOTE: View EMWS2.REG_TEST.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      

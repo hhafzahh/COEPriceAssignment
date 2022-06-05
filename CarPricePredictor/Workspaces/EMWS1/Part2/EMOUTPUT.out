@@ -1,0 +1,70 @@
+*------------------------------------------------------------*
+User:                2001231F
+Date:                04,June,2022
+Time:                21:14:54
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+INPUT      INTERVAL          1
+INPUT      NOMINAL           1
+TARGET     INTERVAL          1
+TIMEID     INTERVAL          1
+ 
+ 
+ 
+ 
+Partition Summary
+ 
+                                   Number of
+Type           Data Set          Observations
+ 
+DATA     EMWS1.FIMPORT2_train         146
+TRAIN    EMWS1.Part2_TRAIN            102
+TEST     EMWS1.Part2_TEST              44
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Summary Statistics for Interval Targets
+ 
+Data=DATA
+ 
+                                                             Number of                     Standard
+Variable         Maximum            Mean         Minimum    Observations    Missing       Deviation    Label
+ 
+Adj_Prem           98950    59743.030822           20894             146       0       18889.945011
+ 
+ 
+Data=TEST
+ 
+                                                             Number of                     Standard
+Variable         Maximum            Mean         Minimum    Observations    Missing       Deviation    Label
+ 
+Adj_Prem         88994.5    56969.284091           23315              44       0       17919.916646
+ 
+ 
+Data=TRAIN
+ 
+                                                             Number of                     Standard
+Variable         Maximum            Mean         Minimum    Observations    Missing       Deviation    Label
+ 
+Adj_Prem           98950     60939.54902           20894             102       0        19255.31844

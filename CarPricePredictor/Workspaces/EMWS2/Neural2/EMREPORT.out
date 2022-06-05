@@ -1,0 +1,94 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Fit Statistics
+
+Target=Adj_Prem Target Label=' '
+
+   Fit
+Statistics    Statistics Label                            Train              Test
+
+ _DFT_        Total Degrees of Freedom                   204.00               .  
+ _DFE_        Degrees of Freedom for Error               123.00               .  
+ _DFM_        Model Degrees of Freedom                    81.00               .  
+ _NW_         Number of Estimated Weights                 81.00               .  
+ _AIC_        Akaike's Information Criterion            4015.90               .  
+ _SBC_        Schwarz's Bayesian Criterion              4284.66               .  
+ _ASE_        Average Squared Error                160153650.07      131459043.73
+ _MAX_        Maximum Absolute Error                   42980.81          40719.83
+ _DIV_        Divisor for ASE                            204.00             88.00
+ _NOBS_       Sum of Frequencies                         204.00             88.00
+ _RASE_       Root Average Squared Error               12655.18          11465.56
+ _SSE_        Sum of Squared Errors              32671344613.90    11568395848.38
+ _SUMW_       Sum of Case Weights Times Freq             204.00             88.00
+ _FPE_        Final Prediction Error               371087725.77               .  
+ _MSE_        Mean Squared Error                   265620687.92      131459043.73
+ _RFPE_       Root Final Prediction Error              19263.64               .  
+ _RMSE_       Root Mean Squared Error                  16297.87          11465.56
+ _AVERR_      Average Error Function               160153650.07      131459043.73
+ _ERR_        Error Function                     32671344613.90    11568395848.38
+ _MISC_       Misclassification Rate                        .                 .  
+ _WRONG_      Number of Wrong Classifications               .                 .  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Assessment Score Rankings
+
+Data Role=TRAIN Target Variable=Adj_Prem Target Label=' '
+
+           Number of       Mean         Mean
+Depth    Observations     Target     Predicted
+
+   5          11         83818.05     85845.82
+  10          10         81678.20     80474.62
+  15          10         78724.55     78739.42
+  20          11         82286.36     76722.80
+  25           9         72134.72     74431.44
+  30          11         63578.50     68679.97
+  35          10         71521.65     66499.51
+  40          10         66108.45     65637.28
+  45          10         62618.00     64848.45
+  50          10         56649.25     62052.86
+  55          11         61877.36     58692.17
+  60          10         50338.70     53626.38
+  65          10         51444.50     50779.25
+  70          10         44431.30     47475.86
+  75          10         45354.95     46190.39
+  80          11         48584.91     44974.78
+  85          10         47780.25     43460.22
+  90          10         42064.95     42347.62
+  95          10         41000.55     41911.78
+ 100          10         37510.95     41413.53
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Assessment Score Distribution
+
+Data Role=TRAIN Target Variable=Adj_Prem Target Label=' '
+
+                            Mean         Mean        Number of       Model
+ Range for Predicted       Target     Predicted    Observations      Score
+
+86498.334 -  88896.350    83825.25     88258.04          2         87697.34
+84100.318 -  86498.334    83816.44     85309.78          9         85299.33
+81702.302 -  84100.318    71251.75     83787.11          2         82901.31
+79304.286 -  81702.302    84284.81     79646.50          8         80503.29
+76906.270 -  79304.286    78296.40     78357.48         15         78105.28
+74508.254 -  76906.270    81056.20     75541.85         10         75707.26
+72110.238 -  74508.254    73766.75     73980.37          6         73309.25
+69712.221 -  72110.238    78002.50     69910.44          1         70911.23
+67314.205 -  69712.221    59459.64     68277.63          7         68513.21
+64916.189 -  67314.205    65925.27     65981.08         28         66115.20
+62518.173 -  64916.189    65323.44     63737.22          8         63717.18
+60120.157 -  62518.173    56057.35     60888.95         10         61319.17
+57722.141 -  60120.157    67073.38     58846.74          4         58921.15
+55324.125 -  57722.141    58049.80     55907.77          5         56523.13
+52926.109 -  55324.125    44757.60     53623.31          5         54125.12
+50528.093 -  52926.109    54981.90     51465.41         10         51727.10
+48130.077 -  50528.093    42755.20     49491.73          5         49329.08
+45732.061 -  48130.077    44970.44     46638.44         18         46931.07
+43334.045 -  45732.061    50598.31     44653.55         16         44533.05
+40936.029 -  43334.045    40240.80     42045.64         35         42135.04

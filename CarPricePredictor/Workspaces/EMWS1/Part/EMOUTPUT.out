@@ -1,0 +1,70 @@
+*------------------------------------------------------------*
+User:                2001231F
+Date:                04,June,2022
+Time:                21:11:47
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+INPUT      INTERVAL          1
+INPUT      NOMINAL           1
+TARGET     INTERVAL          1
+TIMEID     INTERVAL          1
+ 
+ 
+ 
+ 
+Partition Summary
+ 
+                                  Number of
+Type          Data Set          Observations
+ 
+DATA     EMWS1.FIMPORT_train         584
+TRAIN    EMWS1.Part_TRAIN            409
+TEST     EMWS1.Part_TEST             175
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Summary Statistics for Interval Targets
+ 
+Data=DATA
+ 
+                                                             Number of                     Standard
+Variable         Maximum            Mean         Minimum    Observations    Missing       Deviation    Label
+ 
+Adj_Prem           98950    52499.666096         19501.5             584       0       18021.331578
+ 
+ 
+Data=TEST
+ 
+                                                             Number of                     Standard
+Variable         Maximum            Mean         Minimum    Observations    Missing       Deviation    Label
+ 
+Adj_Prem           97900    52710.685714         19545.5             175       0       19420.325109
+ 
+ 
+Data=TRAIN
+ 
+                                                             Number of                     Standard
+Variable         Maximum            Mean         Minimum    Observations    Missing       Deviation    Label
+ 
+Adj_Prem           98950    52409.376528         19501.5             409       0       17412.590864

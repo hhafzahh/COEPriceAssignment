@@ -1,0 +1,92 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Fit Statistics
+
+Target=premium Target Label=' '
+
+   Fit
+Statistics    Statistics Label                            Train              Test
+
+ _AIC_        Akaike's Information Criterion           15680.60               .  
+ _ASE_        Average Squared Error                207341547.95      231304484.70
+ _AVERR_      Average Error Function               207341547.95      231304484.70
+ _DFE_        Degrees of Freedom for Error               810.00               .  
+ _DFM_        Model Degrees of Freedom                     8.00               .  
+ _DFT_        Total Degrees of Freedom                   818.00               .  
+ _DIV_        Divisor for ASE                            818.00            350.00
+ _ERR_        Error Function                    169605386220.82    80956569645.05
+ _FPE_        Final Prediction Error               211437183.46               .  
+ _MAX_        Maximum Absolute Error                   36674.66          42648.35
+ _MSE_        Mean Square Error                    209389365.70      231304484.70
+ _NOBS_       Sum of Frequencies                         818.00            350.00
+ _NW_         Number of Estimate Weights                   8.00               .  
+ _RASE_       Root Average Sum of Squares              14399.36          15208.70
+ _RFPE_       Root Final Prediction Error              14540.88               .  
+ _RMSE_       Root Mean Squared Error                  14470.29          15208.70
+ _SBC_        Schwarz's Bayesian Criterion             15718.26               .  
+ _SSE_        Sum of Squared Errors             169605386220.82    80956569645.05
+ _SUMW_       Sum of Case Weights Times Freq             818.00            350.00
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Assessment Score Rankings
+
+Data Role=TRAIN Target Variable=premium Target Label=' '
+
+           Number of       Mean         Mean
+Depth    Observations     Target     Predicted
+
+   5          41         78360.68     68846.36
+  10          41         68089.95     66146.14
+  15          41         73794.61     64535.03
+  20          41         74428.88     62373.62
+  25          41         67734.05     61261.72
+  30          41         58982.20     60448.85
+  35          41         55623.10     59426.01
+  40          41         50386.63     58439.47
+  45          41         52114.15     57135.22
+  50          40         44099.73     55367.96
+  55          41         41791.07     53898.17
+  60          41         41262.61     50019.42
+  65          41         42618.54     47242.74
+  70          41         47304.34     44555.55
+  75          41         44910.88     43653.30
+  80          41         46947.98     42792.23
+  85          41         38229.46     41783.46
+  90          41         35509.78     40023.85
+  95          41         37921.24     37326.61
+ 100          40         44850.33     29587.07
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Assessment Score Distribution
+
+Data Role=TRAIN Target Variable=premium Target Label=' '
+
+                            Mean         Mean        Number of       Model
+ Range for Predicted       Target     Predicted    Observations      Score
+
+67370.854 -  69815.292    77400.67     68658.94          49        68593.07
+64926.415 -  67370.854    67763.56     65621.09          41        66148.63
+62481.976 -  64926.415    76230.90     63959.35          50        63704.20
+60037.538 -  62481.976    64573.19     61108.68         104        61259.76
+57593.099 -  60037.538    54249.28     58821.98          95        58815.32
+55148.660 -  57593.099    47942.45     56241.73          58        56370.88
+52704.222 -  55148.660    42134.57     54296.12          49        53926.44
+50259.783 -  52704.222    38217.10     51227.62          20        51482.00
+47815.344 -  50259.783    39866.97     49025.51          39        49037.56
+45370.906 -  47815.344    46010.88     46508.04          32        46593.13
+42926.467 -  45370.906    46738.12     43888.38          89        44148.69
+40482.028 -  42926.467    40972.63     41998.01          79        41704.25
+38037.590 -  40482.028    35017.93     39560.86          40        39259.81
+35593.151 -  38037.590    38873.17     37216.92          29        36815.37
+33148.712 -  35593.151    41614.47     34421.52          15        34370.93
+30704.274 -  33148.712    41484.78     32253.43           9        31926.49
+28259.835 -  30704.274    51955.75     29432.66           4        29482.05
+25815.396 -  28259.835    49477.17     27719.60           6        27037.62
+23370.958 -  25815.396    45220.80     24266.11           5        24593.18
+20926.519 -  23370.958    42588.40     22671.29           5        22148.74

@@ -1,0 +1,12 @@
+if NAME="bidding_no" then do;
+ROLE="INPUT";
+LEVEL="NOMINAL";
+ORDER="";
+DROP="N";
+end;
+if NAME="premium" then do;
+ROLE="TARGET";
+LEVEL="INTERVAL";
+ORDER="";
+DROP="N";
+end;

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  UseEstimates="N" NetworkArchitecture="MLP" DirectConnection="N" Hidden="20" Prelim="Y"
+ PreliminaryRuns="5" PrelimMaxiter="10" PrelimMaxTime="1 HOUR" Maxiter="150" Maxtime="4 HOURS"
+ TrainingTechnique="DEFAULT" ConvDefaults="Y" AbsConvValue="-1.34078E154" AbsFValue="0"
+ AbsFTime="1" AbsGValue="0.00001" AbsGTime="1" AbsXValue="1E-8" AbsXTime="1" FConvValue="0"
+ FConvTime="1" GConvValue="1E-6" GConvTime="1" ModelSelectionCriterion="MISCLASSIFICATION"
+ SuppressOutput="N" Residuals="Y" Standardizations="N" HiddenUnits="N" TrainCode=""
+ PrelimOutest="" Outest="" Outfit="" InitialDs="" CodefileRes="" CodefileNoRes=""
+ AddHidden="Y" HiddenCombFunction="DEFAULT" HiddenActivation="DEFAULT" HiddenBias="Y"
+ TargetCombFunction="DEFAULT" TargetActivation="DEFAULT" TargetError="DEFAULT" TargetBias="Y"
+ InitialSeed="12345" RandDist="NORMAL" RandScale="0.1" RandLoc="0" InputStandardization="STD"
+ WeightDecay="0" Accelerate="1.2" Decelerate="0.5" Learn="0.1" MaxLearn="50" MinLearn="0.00001"
+ Momentum="0" MaxMomentum="1.75" Tilt="0" ForceRun="N" RunAction="Train" Component="NeuralNetwork"
+ RawCreateTime="1969996434" CreateTime="04JUN2022:21:13:54" RunId="6a7649cd-eee1-4016-9c65-945a0be8f856"
+ RawLastTimeRun="1969996494.8" RawRunTime="9.6410000324" LastTimeRun="04JUN2022:21:14:55"
+ RunTime="0 Hr. 0 Min. 9.64 Sec.">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES ><![CDATA[
+EMNOTES
+]]>
+</FILEPROPERTIES><EMTARGETATTRIBUTES >
+<ADJ_PREM >
+<DECDATA  Table="EMWS1.Neural2_Adj_Prem_DD">
+<DATA >
+<OBS  ADJ_PREM="19501.5"/>
+<OBS  ADJ_PREM="98950"/>
+<OBS  ADJ_PREM="52409.376528"/>
+</DATA>
+<METADATA >
+<VARIABLE  NAME="Adj_Prem" LABEL="" LENGTH="8" FORMAT="" TYPE="N"/>
+</METADATA>
+</DECDATA>
+<DECMETA  Table="EMWS1.Neural2_Adj_Prem_DM">
+<DATA >
+<OBS  _TYPE_="MATRIX" VARIABLE="" LABEL="" FORMAT="" LEVEL="PROFIT" TYPE="" COST="" USE="N"
+ MIN="." MEAN="." MAX="."/>
+<OBS  _TYPE_="TARGET" VARIABLE="Adj_Prem" LABEL="" FORMAT="BEST12.0" LEVEL="INTERVAL" TYPE="N"
+ COST="" USE="" MIN="19501.5" MEAN="52409.376528" MAX="98950"/>
+<OBS  _TYPE_="PREDICTED" VARIABLE="P_Adj_Prem" LABEL="Predicted: Adj_Prem" FORMAT="" LEVEL=""
+ TYPE="N" COST="" USE="" MIN="." MEAN="." MAX="."/>
+<OBS  _TYPE_="RESIDUAL" VARIABLE="R_Adj_Prem" LABEL="Residual: Adj_Prem" FORMAT="" LEVEL=""
+ TYPE="N" COST="" USE="" MIN="." MEAN="." MAX="."/>
+</DATA>
+<METADATA >
+<VARIABLE  NAME="_TYPE_" LABEL="Type" LENGTH="32" FORMAT="" TYPE="C"/>
+<VARIABLE  NAME="VARIABLE" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<VARIABLE  NAME="LABEL" LABEL="Label" LENGTH="256" FORMAT="" TYPE="C"/>
+<VARIABLE  NAME="FORMAT" LABEL="Format" LENGTH="32" FORMAT="" TYPE="C"/>
+<VARIABLE  NAME="LEVEL" LABEL="Measurement Level" LENGTH="32" FORMAT="" TYPE="C"/>
+<VARIABLE  NAME="TYPE" LABEL="Type" LENGTH="1" FORMAT="" TYPE="C"/>
+<VARIABLE  NAME="COST" LABEL="Cost" LENGTH="32" FORMAT="" TYPE="C"/>
+<VARIABLE  NAME="USE" LABEL="Use" LENGTH="1" FORMAT="" TYPE="C"/>
+<VARIABLE  NAME="MIN" LABEL="Minimum" LENGTH="8" FORMAT="" TYPE="N"/>
+<VARIABLE  NAME="MEAN" LABEL="Mean" LENGTH="8" FORMAT="" TYPE="N"/>
+<VARIABLE  NAME="MAX" LABEL="Maximum" LENGTH="8" FORMAT="" TYPE="N"/>
+</METADATA>
+</DECMETA>
+</ADJ_PREM>
+</EMTARGETATTRIBUTES>
+</_ROOT_>

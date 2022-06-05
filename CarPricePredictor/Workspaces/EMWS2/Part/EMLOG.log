@@ -1,0 +1,572 @@
+*------------------------------------------------------------*
+User:                2001231F
+Date:                04,June,2022
+Time:                23:08:59
+Site:                11002449
+Platform:            X64_8PRO
+Maintenance Release: 9.04.01M3P062415
+EM Version:          14.1
+* 
+*------------------------------------------------------------*
+* Training Log
+Date:                04,June,2022
+Time:                23:08:57
+*------------------------------------------------------------*
+10866  proc freq data=EMWS2.Part_VariableSet noprint;
+10867  table ROLE*LEVEL/out=WORK.PartMETA;
+10868  run;
+ 
+NOTE: There were 4 observations read from the data set EMWS2.PART_VARIABLESET.
+NOTE: The data set WORK.PARTMETA has 4 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+ 
+ 
+10869  proc print data=WORK.PartMETA label noobs;
+10870  var ROLE LEVEL COUNT;
+10871  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+10872  title9 ' ';
+10873  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+10874  run;
+ 
+NOTE: There were 4 observations read from the data set WORK.PARTMETA.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+10875  title10;
+ 
+10883  *------------------------------------------------------------*;
+10884  * Part: Determine number of observations;
+10885  *------------------------------------------------------------*;
+10886  proc sql;
+10887  reset noprint;
+10888  select count(*) into :_tmpa from EMWS2.FIMPORT_TRAIN
+10889  ;
+NOTE: View EMWS2.FIMPORT_TRAIN.VIEW used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+ 
+NOTE: There were 292 observations read from the data set EMWS2.FIMPORT_DATA.
+10890  quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+ 
+ 
+trainPct=70 validatePct=0 testPct=30
+10891  *------------------------------------------------------------*;
+10892  * Part: Create random partition;
+10893  *------------------------------------------------------------*;
+10894  data
+10895  EMWS2.Part_TRAIN(label="")
+10896  EMWS2.Part_TEST(label="")
+10897  ;
+10898  retain _seed_ 12345;
+10899  drop _seed_ _genvalue_;
+10900  call ranuni(_seed_, _genvalue_);
+10901  label _dataobs_ = "%sysfunc(sasmsg(sashelp.dmine, sample_dataobs_vlabel, NOQUOTE))";
+10902  _dataobs_ = _N_;
+10903  drop _c00:;
+10904  set EMWS2.FIMPORT_TRAIN;
+10905  if (292 +1-_n_)*_genvalue_ <= (204 - _C000001) then do;
+10906  _C000001 + 1;
+10907  output EMWS2.Part_TRAIN;
+10908  end;
+10909  else do;
+10910  _C000002 + 1;
+10911  output EMWS2.Part_TEST;
+10912  end;
+10913  run;
+ 
+NOTE: View EMWS2.FIMPORT_TRAIN.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+ 
+NOTE: There were 292 observations read from the data set EMWS2.FIMPORT_DATA.
+NOTE: There were 292 observations read from the data set EMWS2.FIMPORT_TRAIN.
+NOTE: The data set EMWS2.PART_TRAIN has 204 observations and 5 variables.
+NOTE: The data set EMWS2.PART_TEST has 88 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+ 
+ 
+10914  run;
+ 
+10915  data _tempNobs;
+10916  length Type $8 Table $32 Nobs 8;
+10917  label type= "%sysfunc(sasmsg(sashelp.dmine, meta_type_vlabel,    NOQUOTE))" table = "%sysfunc(sasmsg(sashelp.dmine, meta_dataset_vlabel, NOQUOTE))" nobs = "%sysfunc(sasmsg(sashelp.dmine,  rpt_numObs_vlabel,   NOQUOTE))";
+10918  type='DATA';
+10919  table="EMWS2.FIMPORT_TRAIN";
+10920  Nobs=292;
+10921  output;
+10922  type='TRAIN';
+10923  table="EMWS2.Part_TRAIN";
+10924  Nobs=204;
+10925  output;
+10926  type='TEST';
+10927  table="EMWS2.Part_TEST";
+10928  Nobs=88;
+10929  output;
+10930  run;
+ 
+NOTE: The data set WORK._TEMPNOBS has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+10931  %let _cn = %sysfunc(getoption(CENTER));
+10932  %let _nb = %sysfunc(getoption(NUMBER));
+10933  options nonumber nocenter;
+10934  proc print data=_tempNobs noobs label;
+10935  title9 ' ';
+10936  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_partitionSummary_title, NOQUOTE))";
+10937  run;
+ 
+NOTE: There were 3 observations read from the data set WORK._TEMPNOBS.
+NOTE: The PROCEDURE PRINT printed page 2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+10938  title10;
+10939  options &_cn &_nb;
+10940  run;
+ 
+*------------------------------------------------------------*
+* Score Log
+Date:                04,June,2022
+Time:                23:08:58
+*------------------------------------------------------------*
+11042  *------------------------------------------------------------*;
+11043  * Part: Computing metadata for TRAIN data;
+11044  *------------------------------------------------------------*;
+ 
+*------------------------------------------------------------*
+* Report Log
+Date:                04,June,2022
+Time:                23:08:59
+*------------------------------------------------------------*
+11418  *------------------------------------------------------------*;
+11419  * Part: Computing statistics for class target variables;
+11420  *------------------------------------------------------------*;
+11421  *------------------------------------------------------------*;
+11422  * Part: Computing statistics for interval target variables;
+11423  *------------------------------------------------------------*;
+11424  proc means data=EMWS2.FIMPORT_TRAIN min max mean std noprint;
+11425  output out=WORK.Part_STATTEMP;
+11426  var
+11427  Adj_Prem
+11428  ;
+11429  run;
+ 
+NOTE: View EMWS2.FIMPORT_TRAIN.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+ 
+NOTE: There were 292 observations read from the data set EMWS2.FIMPORT_DATA.
+NOTE: There were 292 observations read from the data set EMWS2.FIMPORT_TRAIN.
+NOTE: The data set WORK.PART_STATTEMP has 5 observations and 4 variables.
+NOTE: PROCEDURE MEANS used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.06 seconds
+ 
+ 
+11430  proc sort data=WORK.Part_STATTEMP NOTHREADS;
+11431  by _stat_;
+11432  run;
+ 
+NOTE: There were 5 observations read from the data set WORK.PART_STATTEMP.
+NOTE: The data set WORK.PART_STATTEMP has 5 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11433  proc transpose data=WORK.Part_STATTEMP out=WORK.Part_BASICSTAT;
+11434  id _stat_;
+11435  copy _FREQ_;
+11436  var
+11437  Adj_Prem
+11438  ;
+11439  run;
+ 
+NOTE: There were 5 observations read from the data set WORK.PART_STATTEMP.
+NOTE: The data set WORK.PART_BASICSTAT has 5 observations and 7 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11440  data _statNamelbl;
+11441  set WORK.M2UR56B_(keep=NAME LABEL rename=(NAME=_NAME_ LABEL=_LABEL_));
+11442  run;
+ 
+NOTE: There were 1 observations read from the data set WORK.M2UR56B_.
+NOTE: The data set WORK._STATNAMELBL has 1 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11443  proc sort data=_statNamelbl;
+11444  by _NAME_;
+11445  run;
+ 
+NOTE: There were 1 observations read from the data set WORK._STATNAMELBL.
+NOTE: The data set WORK._STATNAMELBL has 1 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11446  proc sort data=WORK.Part_BASICSTAT;
+11447  by _NAME_;
+11448  run;
+ 
+NOTE: There were 5 observations read from the data set WORK.PART_BASICSTAT.
+NOTE: The data set WORK.PART_BASICSTAT has 5 observations and 7 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11449  data WORK.Part_BASICSTAT;
+11450  label _NAME_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" MAX = "%sysfunc(sasmsg(sashelp.dmine, rpt_maximum_vlabel, NOQUOTE))" MEAN = "%sysfunc(sasmsg(sashelp.dmine, rpt_mean_vlabel, NOQUOTE))" MIN =
+11451     "%sysfunc(sasmsg(sashelp.dmine, rpt_minimum_vlabel, NOQUOTE))" N = "%sysfunc(sasmsg(sashelp.dmine, rpt_nonMiss_vlabel, NOQUOTE))" NMiss = "%sysfunc(sasmsg(sashelp.dmine, rpt_missing_vlabel, NOQUOTE))" STD =
+11452     "%sysfunc(sasmsg(sashelp.dmine, rpt_std_vlabel, NOQUOTE))" _LABEL_= "%sysfunc(sasmsg(sashelp.dmine, rpt_label_vlabel, NOQUOTE))";
+11453  merge _statnamelbl(in=_a) WORK.Part_BASICSTAT(in=_b);
+11454  by _NAME_;
+11455  where _NAME_ ne '';
+11456  NMISS = _FREQ_ - N;
+11457  drop _FREQ_;
+11458  if _a and _b then output;
+11459  run;
+ 
+NOTE: There were 1 observations read from the data set WORK._STATNAMELBL.
+      WHERE _NAME_ not = ' ';
+NOTE: There were 1 observations read from the data set WORK.PART_BASICSTAT.
+      WHERE _NAME_ not = ' ';
+NOTE: The data set WORK.PART_BASICSTAT has 1 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11460  data EMWS2.Part_INTRVL;
+11461  label DATA = "%sysfunc(sasmsg(sashelp.dmine, rpt_data_vlabel ,   NOQUOTE))";
+11462  length DATA $8;
+11463  set WORK.Part_BASICSTAT;
+11464  DATA = 'DATA';
+11465  run;
+ 
+NOTE: There were 1 observations read from the data set WORK.PART_BASICSTAT.
+NOTE: The data set EMWS2.PART_INTRVL has 1 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11466  *------------------------------------------------------------*;
+11467  * Part: Computing statistics for class target variables;
+11468  *------------------------------------------------------------*;
+11469  *------------------------------------------------------------*;
+11470  * Part: Computing statistics for interval target variables;
+11471  *------------------------------------------------------------*;
+11472  proc means data=EMWS2.Part_TRAIN min max mean std noprint;
+11473  output out=WORK.Part_STATTEMP;
+11474  var
+11475  Adj_Prem
+11476  ;
+11477  run;
+ 
+NOTE: There were 204 observations read from the data set EMWS2.PART_TRAIN.
+NOTE: The data set WORK.PART_STATTEMP has 5 observations and 4 variables.
+NOTE: PROCEDURE MEANS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11478  proc sort data=WORK.Part_STATTEMP NOTHREADS;
+11479  by _stat_;
+11480  run;
+ 
+NOTE: There were 5 observations read from the data set WORK.PART_STATTEMP.
+NOTE: The data set WORK.PART_STATTEMP has 5 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11481  proc transpose data=WORK.Part_STATTEMP out=WORK.Part_BASICSTAT;
+11482  id _stat_;
+11483  copy _FREQ_;
+11484  var
+11485  Adj_Prem
+11486  ;
+11487  run;
+ 
+NOTE: There were 5 observations read from the data set WORK.PART_STATTEMP.
+NOTE: The data set WORK.PART_BASICSTAT has 5 observations and 7 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+11488  data _statNamelbl;
+11489  set WORK.M2UR56B_(keep=NAME LABEL rename=(NAME=_NAME_ LABEL=_LABEL_));
+11490  run;
+ 
+NOTE: There were 1 observations read from the data set WORK.M2UR56B_.
+NOTE: The data set WORK._STATNAMELBL has 1 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11491  proc sort data=_statNamelbl;
+11492  by _NAME_;
+11493  run;
+ 
+NOTE: There were 1 observations read from the data set WORK._STATNAMELBL.
+NOTE: The data set WORK._STATNAMELBL has 1 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11494  proc sort data=WORK.Part_BASICSTAT;
+11495  by _NAME_;
+11496  run;
+ 
+NOTE: There were 5 observations read from the data set WORK.PART_BASICSTAT.
+NOTE: The data set WORK.PART_BASICSTAT has 5 observations and 7 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11497  data WORK.Part_BASICSTAT;
+11498  label _NAME_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" MAX = "%sysfunc(sasmsg(sashelp.dmine, rpt_maximum_vlabel, NOQUOTE))" MEAN = "%sysfunc(sasmsg(sashelp.dmine, rpt_mean_vlabel, NOQUOTE))" MIN =
+11499     "%sysfunc(sasmsg(sashelp.dmine, rpt_minimum_vlabel, NOQUOTE))" N = "%sysfunc(sasmsg(sashelp.dmine, rpt_nonMiss_vlabel, NOQUOTE))" NMiss = "%sysfunc(sasmsg(sashelp.dmine, rpt_missing_vlabel, NOQUOTE))" STD =
+11500     "%sysfunc(sasmsg(sashelp.dmine, rpt_std_vlabel, NOQUOTE))" _LABEL_= "%sysfunc(sasmsg(sashelp.dmine, rpt_label_vlabel, NOQUOTE))";
+11501  merge _statnamelbl(in=_a) WORK.Part_BASICSTAT(in=_b);
+11502  by _NAME_;
+11503  where _NAME_ ne '';
+11504  NMISS = _FREQ_ - N;
+11505  drop _FREQ_;
+11506  if _a and _b then output;
+11507  run;
+ 
+NOTE: There were 1 observations read from the data set WORK._STATNAMELBL.
+      WHERE _NAME_ not = ' ';
+NOTE: There were 1 observations read from the data set WORK.PART_BASICSTAT.
+      WHERE _NAME_ not = ' ';
+NOTE: The data set WORK.PART_BASICSTAT has 1 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11508  data WORK.Part_BASICSTAT;
+11509  label DATA = "%sysfunc(sasmsg(sashelp.dmine, rpt_data_vlabel ,   NOQUOTE))";
+11510  length DATA $8;
+11511  set WORK.Part_BASICSTAT;
+11512  DATA = "TRAIN";
+11513  run;
+ 
+NOTE: There were 1 observations read from the data set WORK.PART_BASICSTAT.
+NOTE: The data set WORK.PART_BASICSTAT has 1 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11514  data EMWS2.Part_INTRVL;
+11515  set EMWS2.Part_INTRVL WORK.Part_BASICSTAT;
+11516  run;
+ 
+NOTE: There were 1 observations read from the data set EMWS2.PART_INTRVL.
+NOTE: There were 1 observations read from the data set WORK.PART_BASICSTAT.
+NOTE: The data set EMWS2.PART_INTRVL has 2 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11517  *------------------------------------------------------------*;
+11518  * Part: Computing statistics for class target variables;
+11519  *------------------------------------------------------------*;
+11520  *------------------------------------------------------------*;
+11521  * Part: Computing statistics for interval target variables;
+11522  *------------------------------------------------------------*;
+11523  proc means data=EMWS2.Part_TEST min max mean std noprint;
+11524  output out=WORK.Part_STATTEMP;
+11525  var
+11526  Adj_Prem
+11527  ;
+11528  run;
+ 
+NOTE: There were 88 observations read from the data set EMWS2.PART_TEST.
+NOTE: The data set WORK.PART_STATTEMP has 5 observations and 4 variables.
+NOTE: PROCEDURE MEANS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11529  proc sort data=WORK.Part_STATTEMP NOTHREADS;
+11530  by _stat_;
+11531  run;
+ 
+NOTE: There were 5 observations read from the data set WORK.PART_STATTEMP.
+NOTE: The data set WORK.PART_STATTEMP has 5 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11532  proc transpose data=WORK.Part_STATTEMP out=WORK.Part_BASICSTAT;
+11533  id _stat_;
+11534  copy _FREQ_;
+11535  var
+11536  Adj_Prem
+11537  ;
+11538  run;
+ 
+NOTE: There were 5 observations read from the data set WORK.PART_STATTEMP.
+NOTE: The data set WORK.PART_BASICSTAT has 5 observations and 7 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11539  data _statNamelbl;
+11540  set WORK.M2UR56B_(keep=NAME LABEL rename=(NAME=_NAME_ LABEL=_LABEL_));
+11541  run;
+ 
+NOTE: There were 1 observations read from the data set WORK.M2UR56B_.
+NOTE: The data set WORK._STATNAMELBL has 1 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11542  proc sort data=_statNamelbl;
+11543  by _NAME_;
+11544  run;
+ 
+NOTE: There were 1 observations read from the data set WORK._STATNAMELBL.
+NOTE: The data set WORK._STATNAMELBL has 1 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11545  proc sort data=WORK.Part_BASICSTAT;
+11546  by _NAME_;
+11547  run;
+ 
+NOTE: There were 5 observations read from the data set WORK.PART_BASICSTAT.
+NOTE: The data set WORK.PART_BASICSTAT has 5 observations and 7 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11548  data WORK.Part_BASICSTAT;
+11549  label _NAME_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" MAX = "%sysfunc(sasmsg(sashelp.dmine, rpt_maximum_vlabel, NOQUOTE))" MEAN = "%sysfunc(sasmsg(sashelp.dmine, rpt_mean_vlabel, NOQUOTE))" MIN =
+11550     "%sysfunc(sasmsg(sashelp.dmine, rpt_minimum_vlabel, NOQUOTE))" N = "%sysfunc(sasmsg(sashelp.dmine, rpt_nonMiss_vlabel, NOQUOTE))" NMiss = "%sysfunc(sasmsg(sashelp.dmine, rpt_missing_vlabel, NOQUOTE))" STD =
+11551     "%sysfunc(sasmsg(sashelp.dmine, rpt_std_vlabel, NOQUOTE))" _LABEL_= "%sysfunc(sasmsg(sashelp.dmine, rpt_label_vlabel, NOQUOTE))";
+11552  merge _statnamelbl(in=_a) WORK.Part_BASICSTAT(in=_b);
+11553  by _NAME_;
+11554  where _NAME_ ne '';
+11555  NMISS = _FREQ_ - N;
+11556  drop _FREQ_;
+11557  if _a and _b then output;
+11558  run;
+ 
+NOTE: There were 1 observations read from the data set WORK._STATNAMELBL.
+      WHERE _NAME_ not = ' ';
+NOTE: There were 1 observations read from the data set WORK.PART_BASICSTAT.
+      WHERE _NAME_ not = ' ';
+NOTE: The data set WORK.PART_BASICSTAT has 1 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11559  data WORK.Part_BASICSTAT;
+11560  label DATA = "%sysfunc(sasmsg(sashelp.dmine, rpt_data_vlabel ,   NOQUOTE))";
+11561  length DATA $8;
+11562  set WORK.Part_BASICSTAT;
+11563  DATA = "TEST";
+11564  run;
+ 
+NOTE: There were 1 observations read from the data set WORK.PART_BASICSTAT.
+NOTE: The data set WORK.PART_BASICSTAT has 1 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11565  data EMWS2.Part_INTRVL;
+11566  set EMWS2.Part_INTRVL WORK.Part_BASICSTAT;
+11567  run;
+ 
+NOTE: There were 2 observations read from the data set EMWS2.PART_INTRVL.
+NOTE: There were 1 observations read from the data set WORK.PART_BASICSTAT.
+NOTE: The data set EMWS2.PART_INTRVL has 3 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11568  data EMWS2.Part_INTRVL(rename=(_name_=VARIABLE));
+11569  set EMWS2.Part_INTRVL;
+11570  label _NAME_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" MIN = "%sysfunc(sasmsg(sashelp.dmine, rpt_minimum_vlabel,  NOQUOTE))" MAX = "%sysfunc(sasmsg(sashelp.dmine, rpt_maximum_vlabel,  NOQUOTE))" MEAN =
+11571     "%sysfunc(sasmsg(sashelp.dmine, rpt_mean_vlabel,     NOQUOTE))" STD = "%sysfunc(sasmsg(sashelp.dmine, rpt_std_vlabel,      NOQUOTE))" N = "%sysfunc(sasmsg(sashelp.dmine, rpt_numObs_vlabel,   NOQUOTE))";
+11572  run;
+ 
+NOTE: There were 3 observations read from the data set EMWS2.PART_INTRVL.
+NOTE: The data set EMWS2.PART_INTRVL has 3 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11573  proc sort data=EMWS2.Part_INTRVL NOTHREADS;
+11574  by DATA;
+11575  run;
+ 
+NOTE: There were 3 observations read from the data set EMWS2.PART_INTRVL.
+NOTE: The data set EMWS2.PART_INTRVL has 3 observations and 9 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11576  %let _cn = %sysfunc(getoption(CENTER));
+11577  %let _nb = %sysfunc(getoption(NUMBER));
+11578  options nonumber nocenter;
+11579  proc print data=EMWS2.Part_INTRVL noobs label;
+11580  by DATA;
+11581  title9 ' ';
+11582  title10 "%sysfunc(sasmsg(sashelp.dmine,  rpt_intervalTargetStats_title, NOQUOTE))";
+11583  run;
+ 
+NOTE: There were 3 observations read from the data set EMWS2.PART_INTRVL.
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11584  title10;
+11585  options &_cn &_nb;
+ 

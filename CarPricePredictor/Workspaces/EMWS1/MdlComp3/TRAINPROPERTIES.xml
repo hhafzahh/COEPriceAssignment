@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  NumberOfReportedLevels="1E-6" NormalizeReportingVariables="Y" DecileBin="20" LiftEpsilon="1E-6"
+ ProfitEpsilon="1E-6" RoiEpsilon="1E-6" ScoreDistBin="20" RocChart="Y" RocEpsilon="0.01"
+ AssessAllTargetLevels="N" SelectionData="DEFAULT" HPCriteria="DEFAULT" SelectionTable="TEST"
+ SelectionCriteria="_MSE_" SelectionDepth="10" NumberofBins="20" RecomputeAssess="N"
+ TargetName="Adj_Prem" ModelId="Neural5" ModelDescription="Neural Network" ModelCriteria="Test: Mean Square Error"
+ ForceRun="N" RunAction="Train" Component="ModelCompare" RawCreateTime="1969996554.2"
+ CreateTime="04JUN2022:21:15:54" StatisticUsed="_TMSE_" TargetLabel="" RunId="0bebd810-152d-4d60-b19c-ccdbeb3bf6f7"
+ RawLastTimeRun="1969998545.6" RawRunTime="10.125999928" LastTimeRun="04JUN2022:21:49:06"
+ RunTime="0 Hr. 0 Min. 10.13 Sec.">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES ><![CDATA[
+EMNOTES
+]]>
+</FILEPROPERTIES><EMTARGETATTRIBUTES/>
+</_ROOT_>

@@ -1,0 +1,1324 @@
+*------------------------------------------------------------*
+User:                2001231F
+Date:                04,June,2022
+Time:                22:25:57
+Site:                11002449
+Platform:            X64_8PRO
+Maintenance Release: 9.04.01M3P062415
+EM Version:          14.1
+* 
+*------------------------------------------------------------*
+* Training Log
+Date:                04,June,2022
+Time:                22:25:52
+*------------------------------------------------------------*
+10865  proc freq data=EMWS1.Ensmbl_VariableSet noprint;
+10866  table ROLE*LEVEL/out=WORK.EnsmblMETA;
+10867  run;
+ 
+NOTE: There were 6 observations read from the data set EMWS1.ENSMBL_VARIABLESET.
+NOTE: The data set WORK.ENSMBLMETA has 3 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+ 
+ 
+10868  proc print data=WORK.EnsmblMETA label noobs;
+10869  var ROLE LEVEL COUNT;
+10870  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+10871  title9 ' ';
+10872  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+10873  run;
+ 
+NOTE: There were 3 observations read from the data set WORK.ENSMBLMETA.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+10874  title10;
+ 
+10875  %let EMNORLEN = %DMNORLEN;
+EMWS1.Reg4_TRAIN EMWS1.Reg4_TRAIN
+EMWS1.Reg4_TRAIN EMWS1.Reg4_TRAIN EMWS1 Reg4_TRAIN
+EMWS1.Reg4_TRAIN EMWS1.Reg4_TRAIN
+EMWS1.Reg4_TRAIN EMWS1.Reg4_TRAIN EMWS1 Reg4_TRAIN
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >>
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL setMetaData >>
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >>
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >>
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL setMetaData >>
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >>
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >>
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >>
+"No decisions defined for target "premium"."
+10876  proc print data = EMWS1.Reg4_premium_DM noobs label;
+10877  var _type_ variable label;
+10878  where _type_ ^in('MATRIX', 'DECISION', 'TRAINPRIOR', 'DATAPRIOR', 'DECPRIOR');
+10879  label _TYPE_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_type_vlabel,     NOQUOTE))" VARIABLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel, NOQUOTE))";
+10880  title9 ' ';
+10881  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_predDecVars_title  , NOQUOTE))";
+10882  run;
+ 
+NOTE: There were 3 observations read from the data set EMWS1.REG4_PREMIUM_DM.
+      WHERE _type_ not in ('DATAPRIOR', 'DECISION', 'DECPRIOR', 'MATRIX', 'TRAINPRIOR');
+NOTE: The PROCEDURE PRINT printed page 2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+10883  title10;
+ 
+10884  %let groupid =;
+10885  %let endGroupid =;
+10886  data _null_;
+10887  set EMWS1.Reg4_EMINFO;
+10888  where key in('ENDGROUP', 'GROUPINFO', 'BOOSTINFO', 'BAGINFO', 'TARGETINFO', 'INDEXINFO');
+10889  if key = 'ENDGROUP' then call symput('endGroupId', DATA);
+10890  else call symput('groupId', DATA);
+10891  run;
+ 
+NOTE: There were 0 observations read from the data set EMWS1.REG4_EMINFO.
+      WHERE key in ('BAGINFO', 'BOOSTINFO', 'ENDGROUP', 'GROUPINFO', 'INDEXINFO', 'TARGETINFO');
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+10892  %let groupid =;
+10893  %let endGroupid =;
+10894  data _null_;
+10895  set EMWS1.Neural7_EMINFO;
+10896  where key in('ENDGROUP', 'GROUPINFO', 'BOOSTINFO', 'BAGINFO', 'TARGETINFO', 'INDEXINFO');
+10897  if key = 'ENDGROUP' then call symput('endGroupId', DATA);
+10898  else call symput('groupId', DATA);
+10899  run;
+ 
+NOTE: There were 0 observations read from the data set EMWS1.NEURAL7_EMINFO.
+      WHERE key in ('BAGINFO', 'BOOSTINFO', 'ENDGROUP', 'GROUPINFO', 'INDEXINFO', 'TARGETINFO');
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+10900  %let groupid =;
+10901  %let endGroupid =;
+10902  data _null_;
+10903  set EMWS1.Neural8_EMINFO;
+10904  where key in('ENDGROUP', 'GROUPINFO', 'BOOSTINFO', 'BAGINFO', 'TARGETINFO', 'INDEXINFO');
+10905  if key = 'ENDGROUP' then call symput('endGroupId', DATA);
+10906  else call symput('groupId', DATA);
+10907  run;
+ 
+NOTE: There were 0 observations read from the data set EMWS1.NEURAL8_EMINFO.
+      WHERE key in ('BAGINFO', 'BOOSTINFO', 'ENDGROUP', 'GROUPINFO', 'INDEXINFO', 'TARGETINFO');
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+10908  data WORK.Ensmbl;
+10909  length NodeId $32 Model $64;
+10910  label Nodeid = "%sysfunc(sasmsg(sashelp.dmine, rpt_nodeId_vlabel,  NOQUOTE))" Model = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeltype,      NOQUOTE))";
+10911  nodeid="REG4";
+10912  model="Regression";
+10913  output;
+10914  nodeid="NEURAL7";
+10915  model="Neural";
+10916  output;
+10917  nodeid="NEURAL8";
+10918  model="Neural";
+10919  output;
+10920  ;
+10921  run;
+ 
+NOTE: The data set WORK.ENSMBL has 3 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+10922  title;
+10923  proc print data=WORK.Ensmbl label noobs;
+10924  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_combinemodels_title,  NOQUOTE))";
+10925  title10 "Probability Function: Average";
+10926  run;
+ 
+NOTE: There were 3 observations read from the data set WORK.ENSMBL.
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+10927  title9;
+10928  title10;
+ 
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.
+*------------------------------------------------------------*
+* Score Log
+Date:                04,June,2022
+Time:                22:25:53
+*------------------------------------------------------------*
+11030  filename emflow "C:\Users\2001231F\Desktop\Predictive\Workspaces\EMWS1\Ensmbl\EMFLOWSCORE.sas";
+11031  *------------------------------------------------------------*;
+11032  * Ensmbl: Scoring REG4_TRAIN data;
+11033  *------------------------------------------------------------*;
+11034  data EMWS1.Ensmbl_TRAIN
+11035  / view=EMWS1.Ensmbl_TRAIN
+11036  ;
+11037  set EMWS1.Reg4_TRAIN
+11038  ;
+11039  %inc emflow;
+11910  run;
+ 
+NOTE: DATA STEP view saved on file EMWS1.ENSMBL_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.REG4_TRAIN.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+ 
+ 
+11911  quit;
+11912  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+ 
+11913  filename emflow "C:\Users\2001231F\Desktop\Predictive\Workspaces\EMWS1\Ensmbl\EMFLOWSCORE.sas";
+11914  *------------------------------------------------------------*;
+11915  * Ensmbl: Scoring REG4_TEST data;
+11916  *------------------------------------------------------------*;
+11917  data EMWS1.Ensmbl_TEST
+11918  / view=EMWS1.Ensmbl_TEST
+11919  ;
+11920  set EMWS1.Reg4_TEST
+11921  ;
+11922  %inc emflow;
+12793  run;
+ 
+NOTE: DATA STEP view saved on file EMWS1.ENSMBL_TEST.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.REG4_TEST.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+ 
+ 
+12794  quit;
+12795  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+ 
+12822  filename _pref "C:\Users\2001231F\Desktop\Predictive\Workspaces\EMWS1\Reg4\EMPUBLISHSCORE.sas";
+12823  proc FCMP NOEXECUTE IMPUTEDDEPS OUTDEPS=_temp;
+12824  %INCLUDE _pref;
+12965  run;
+ 
+NOTE: Dependency structure written to data set _TEMP.
+NOTE: PROCEDURE FCMP used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12966  quit;
+12967  filename _pref;
+NOTE: Fileref _PREF has been deassigned.
+12968  data _temp(rename=(RHS=NAME));
+12969  length Node $32;
+12970  retain ID 2 Node "Reg4";
+12971  set _temp;
+12972  run;
+ 
+NOTE: There were 72 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK._TEMP has 72 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12973  proc sort data=_temp;
+12974  by NAME;
+12975  run;
+ 
+NOTE: There were 72 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK._TEMP has 72 observations and 14 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12976  proc sort data=EMWS1.Reg4_variableset out=_temp2(keep=NAME CREATOR);
+12977  by NAME;
+12978  run;
+ 
+NOTE: There were 6 observations read from the data set EMWS1.REG4_VARIABLESET.
+NOTE: The data set WORK._TEMP2 has 6 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12979  data _temp2;
+12980  length CREATOR $32;
+12981  set _temp2;
+12982  run;
+ 
+NOTE: There were 6 observations read from the data set WORK._TEMP2.
+NOTE: The data set WORK._TEMP2 has 6 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12983  proc contents data=EMWS1.Reg4_train out=_meta(keep=NAME) noprint;
+12984  run;
+ 
+NOTE: The data set WORK._META has 11 observations and 1 variables.
+NOTE: PROCEDURE CONTENTS used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+ 
+ 
+12985  proc sort data=_meta;
+12986  by NAME;
+12987  run;
+ 
+NOTE: There were 11 observations read from the data set WORK._META.
+NOTE: The data set WORK._META has 11 observations and 1 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12988  data _temp2;
+12989  merge _meta _temp2;
+12990  by NAME;
+12991  run;
+ 
+WARNING: Multiple lengths were specified for the BY variable NAME by input data sets. This might cause unexpected results.
+NOTE: There were 11 observations read from the data set WORK._META.
+NOTE: There were 6 observations read from the data set WORK._TEMP2.
+NOTE: The data set WORK._TEMP2 has 11 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12992  proc sql;
+12993  create table _tempx as select p.node, p.lhs, p.id , p2.name, p2.CREATOR from work._temp p, work._temp2 p2 where upcase(p.NAME)=upcase(p2.NAME);
+NOTE: Table WORK._TEMPX created, with 34 rows and 5 columns.
+ 
+12994  quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12995  proc append base=EMWS1.Ensmbl_FCMP data=_tempx;
+12996  run;
+ 
+NOTE: Appending WORK._TEMPX to EMWS1.ENSMBL_FCMP.
+NOTE: BASE data set does not exist. DATA file is being copied to BASE file.
+NOTE: There were 34 observations read from the data set WORK._TEMPX.
+NOTE: The data set EMWS1.ENSMBL_FCMP has 34 observations and 5 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12997  %macro varDept(fcmpdata=,id=);
+12998  %global nobs&id scoreFlag&id;
+12999  %let scoreFlag&id = 0;
+13000  %if &id=1 or ^&fcmpStart %then %do;
+13001  proc sort data=&fcmpdata out=_temp&id nodupkey;
+13002  by NAME;
+13003  where id=&id and LHS in( %let j=1;
+13004  %do %while(%scan(_WARN_ P_premium, &j) ne );
+13005  %let var = %scan(_WARN_ P_premium, &j);
+13006  "&var" %let j = %eval(&j+1);
+13007  %end;
+13008  );
+13009  run;
+13010  %let dsid = %sysfunc(open(_temp&id));
+13011  %let nobs&id = %sysfunc(attrn(&dsid, NLOBSF));
+13012  %let dsid = %sysfunc(close(&dsid));
+13013  %if &&nobs&id %then %do;
+13014  %let scoreFlag&id = 1;
+13015  %let fcmpStart = 1;
+13016  %end;
+13017  %else %let fcmpStart = 0;
+13018  %end;
+13019  %else %do;
+13020  proc sort data=&fcmpdata out=_tempid;
+13021  where id=&id;
+13022  by LHS;
+13023  run;
+13024  %let dsid = %sysfunc(open(_tempid));
+13025  %let nobs&id = %sysfunc(attrn(&dsid, NLOBSF));
+13026  %let dsid = %sysfunc(close(&dsid));
+13027  %if ^&&nobs&id %then %do;
+13028  proc datasets lib=work nolist;
+13029  delete _tempid;
+13030  run;
+13031  quit;
+13032  %end;
+13033  %else %do;
+13034  data _tempAll;
+13035  set %let j=%eval(&id-1);
+13036  %do x=1 %to &j;
+13037  %if &&nobs&x %then %do;
+13038  _temp&x %end;
+13039  %end;
+13040  ;
+13041  run;
+13042  proc sql;
+13043  create table _temp&id as select p2.lhs, p2.name, p2.Node from work._tempAll p, work._tempid p2 where p.name=p2.lhs;
+13044  quit;
+13045  data _temp&id;
+13046  set _temp&id;
+13047  where LHS ne '' and NAME ne '' and Node ne '';
+13048  run;
+13049  proc datasets lib=work nolist;
+13050  delete _tempAll;
+13051  run;
+13052  %let dsid = %sysfunc(open(_temp&id));
+13053  %let nobs&id = %sysfunc(attrn(&dsid, NLOBSF));
+13054  %let dsid = %sysfunc(close(&dsid));
+13055  %if ^&&nobs&id %then %do;
+13056  proc datasets lib=work nolist;
+13057  delete _temp&id;
+13058  run;
+13059  quit;
+13060  %end;
+13061  %else %do;
+13062  %let scoreFlag&id = 1;
+13063  data _temp&id;
+13064  set _temp&id;
+13065  where LHS ne NAME and node ne '';
+13066  run;
+13067  %let dsid = %sysfunc(open(_temp&id));
+13068  %let nobs&id = %sysfunc(attrn(&dsid, NLOBSF));
+13069  %let dsid = %sysfunc(close(&dsid));
+13070  %if ^&&nobs&id %then %do;
+13071  proc datasets lib=work nolist;
+13072  delete _temp&id;
+13073  run;
+13074  quit;
+13075  %end;
+13076  %else %do;
+13077  proc sort data=_temp&id nodupkey;
+13078  by LHS NAME;
+13079  run;
+13080  %end;
+13081  %end;
+13082  %end;
+13083  %end;
+13084  %mend varDept;
+13085  %macro optCode(outdata=fcmpdata);
+13086  %global fcmpStart;
+13087  %let fcmpStart = 0;
+13088  %let outputVars = _WARN_ P_premium;
+13089  %let NumNodes=4;
+13090  %do k=1 %to &NumNodes;
+13091  %vardept(fcmpdata=&outdata, id=&k);
+13092  %end;
+13093  %mend optCode;
+13094  %optcode(outData=EMWS1.Ensmbl_FCMP);
+ 
+NOTE: Input data set is empty.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: There were 0 observations read from the data set EMWS1.ENSMBL_FCMP.
+      WHERE (id=1) and LHS in ('P_premium', '_WARN_');
+NOTE: The data set WORK._TEMP1 has 0 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: There were 10 observations read from the data set EMWS1.ENSMBL_FCMP.
+      WHERE (id=2) and LHS in ('P_premium', '_WARN_');
+NOTE: 5 observations with duplicate key values were deleted.
+NOTE: The data set WORK._TEMP2 has 5 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: Input data set is empty.
+NOTE: There were 0 observations read from the data set EMWS1.ENSMBL_FCMP.
+      WHERE id=3;
+NOTE: The data set WORK._TEMPID has 0 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: Deleting WORK._TEMPID (memtype=DATA).
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: Input data set is empty.
+NOTE: There were 0 observations read from the data set EMWS1.ENSMBL_FCMP.
+      WHERE id=4;
+NOTE: The data set WORK._TEMPID has 0 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: Deleting WORK._TEMPID (memtype=DATA).
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+13095  filename _pref "C:\Users\2001231F\Desktop\Predictive\Workspaces\EMWS1\Neural7\EMPUBLISHSCORE.sas";
+13096  proc FCMP NOEXECUTE IMPUTEDDEPS OUTDEPS=_temp;
+13097  %INCLUDE _pref;
+13293  run;
+ 
+NOTE: Dependency structure written to data set _TEMP.
+NOTE: PROCEDURE FCMP used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+13294  quit;
+13295  filename _pref;
+NOTE: Fileref _PREF has been deassigned.
+13296  data _temp(rename=(RHS=NAME));
+13297  length Node $32;
+13298  retain ID 2 Node "Neural7";
+13299  set _temp;
+13300  run;
+ 
+NOTE: There were 196 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK._TEMP has 196 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+13301  proc sort data=_temp;
+13302  by NAME;
+13303  run;
+ 
+NOTE: There were 196 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK._TEMP has 196 observations and 14 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+13304  proc sort data=EMWS1.Neural7_variableset out=_temp2(keep=NAME CREATOR);
+13305  by NAME;
+13306  run;
+ 
+NOTE: There were 6 observations read from the data set EMWS1.NEURAL7_VARIABLESET.
+NOTE: The data set WORK._TEMP2 has 6 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+13307  data _temp2;
+13308  length CREATOR $32;
+13309  set _temp2;
+13310  run;
+ 
+NOTE: There were 6 observations read from the data set WORK._TEMP2.
+NOTE: The data set WORK._TEMP2 has 6 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+13311  proc contents data=EMWS1.Neural7_train out=_meta(keep=NAME) noprint;
+13312  run;
+ 
+NOTE: The data set WORK._META has 11 observations and 1 variables.
+NOTE: PROCEDURE CONTENTS used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+ 
+ 
+13313  proc sort data=_meta;
+13314  by NAME;
+13315  run;
+ 
+NOTE: There were 11 observations read from the data set WORK._META.
+NOTE: The data set WORK._META has 11 observations and 1 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+13316  data _temp2;
+13317  merge _meta _temp2;
+13318  by NAME;
+13319  run;
+ 
+WARNING: Multiple lengths were specified for the BY variable NAME by input data sets. This might cause unexpected results.
+NOTE: There were 11 observations read from the data set WORK._META.
+NOTE: There were 6 observations read from the data set WORK._TEMP2.
+NOTE: The data set WORK._TEMP2 has 11 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+13320  proc sql;
+13321  create table _tempx as select p.node, p.lhs, p.id , p2.name, p2.CREATOR from work._temp p, work._temp2 p2 where upcase(p.NAME)=upcase(p2.NAME);
+NOTE: Table WORK._TEMPX created, with 73 rows and 5 columns.
+ 
+13322  quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+13323  proc append base=EMWS1.Ensmbl_FCMP data=_tempx;
+13324  run;
+ 
+NOTE: Appending WORK._TEMPX to EMWS1.ENSMBL_FCMP.
+NOTE: BASE data set does not exist. DATA file is being copied to BASE file.
+NOTE: There were 73 observations read from the data set WORK._TEMPX.
+NOTE: The data set EMWS1.ENSMBL_FCMP has 73 observations and 5 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+13325  %macro varDept(fcmpdata=,id=);
+13326  %global nobs&id scoreFlag&id;
+13327  %let scoreFlag&id = 0;
+13328  %if &id=1 or ^&fcmpStart %then %do;
+13329  proc sort data=&fcmpdata out=_temp&id nodupkey;
+13330  by NAME;
+13331  where id=&id and LHS in( %let j=1;
+13332  %do %while(%scan(_WARN_ P_premium, &j) ne );
+13333  %let var = %scan(_WARN_ P_premium, &j);
+13334  "&var" %let j = %eval(&j+1);
+13335  %end;
+13336  );
+13337  run;
+13338  %let dsid = %sysfunc(open(_temp&id));
+13339  %let nobs&id = %sysfunc(attrn(&dsid, NLOBSF));
+13340  %let dsid = %sysfunc(close(&dsid));
+13341  %if &&nobs&id %then %do;
+13342  %let scoreFlag&id = 1;
+13343  %let fcmpStart = 1;
+13344  %end;
+13345  %else %let fcmpStart = 0;
+13346  %end;
+13347  %else %do;
+13348  proc sort data=&fcmpdata out=_tempid;
+13349  where id=&id;
+13350  by LHS;
+13351  run;
+13352  %let dsid = %sysfunc(open(_tempid));
+13353  %let nobs&id = %sysfunc(attrn(&dsid, NLOBSF));
+13354  %let dsid = %sysfunc(close(&dsid));
+13355  %if ^&&nobs&id %then %do;
+13356  proc datasets lib=work nolist;
+13357  delete _tempid;
+13358  run;
+13359  quit;
+13360  %end;
+13361  %else %do;
+13362  data _tempAll;
+13363  set %let j=%eval(&id-1);
+13364  %do x=1 %to &j;
+13365  %if &&nobs&x %then %do;
+13366  _temp&x %end;
+13367  %end;
+13368  ;
+13369  run;
+13370  proc sql;
+13371  create table _temp&id as select p2.lhs, p2.name, p2.Node from work._tempAll p, work._tempid p2 where p.name=p2.lhs;
+13372  quit;
+13373  data _temp&id;
+13374  set _temp&id;
+13375  where LHS ne '' and NAME ne '' and Node ne '';
+13376  run;
+13377  proc datasets lib=work nolist;
+13378  delete _tempAll;
+13379  run;
+13380  %let dsid = %sysfunc(open(_temp&id));
+13381  %let nobs&id = %sysfunc(attrn(&dsid, NLOBSF));
+13382  %let dsid = %sysfunc(close(&dsid));
+13383  %if ^&&nobs&id %then %do;
+13384  proc datasets lib=work nolist;
+13385  delete _temp&id;
+13386  run;
+13387  quit;
+13388  %end;
+13389  %else %do;
+13390  %let scoreFlag&id = 1;
+13391  data _temp&id;
+13392  set _temp&id;
+13393  where LHS ne NAME and node ne '';
+13394  run;
+13395  %let dsid = %sysfunc(open(_temp&id));
+13396  %let nobs&id = %sysfunc(attrn(&dsid, NLOBSF));
+13397  %let dsid = %sysfunc(close(&dsid));
+13398  %if ^&&nobs&id %then %do;
+13399  proc datasets lib=work nolist;
+13400  delete _temp&id;
+13401  run;
+13402  quit;
+13403  %end;
+13404  %else %do;
+13405  proc sort data=_temp&id nodupkey;
+13406  by LHS NAME;
+13407  run;
+13408  %end;
+13409  %end;
+13410  %end;
+13411  %end;
+13412  %mend varDept;
+13413  %macro optCode(outdata=fcmpdata);
+13414  %global fcmpStart;
+13415  %let fcmpStart = 0;
+13416  %let outputVars = _WARN_ P_premium;
+13417  %let NumNodes=4;
+13418  %do k=1 %to &NumNodes;
+13419  %vardept(fcmpdata=&outdata, id=&k);
+13420  %end;
+13421  %mend optCode;
+13422  %optcode(outData=EMWS1.Ensmbl_FCMP);
+ 
+NOTE: Input data set is empty.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: There were 0 observations read from the data set EMWS1.ENSMBL_FCMP.
+      WHERE (id=1) and LHS in ('P_premium', '_WARN_');
+NOTE: The data set WORK._TEMP1 has 0 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: There were 11 observations read from the data set EMWS1.ENSMBL_FCMP.
+      WHERE (id=2) and LHS in ('P_premium', '_WARN_');
+NOTE: 5 observations with duplicate key values were deleted.
+NOTE: The data set WORK._TEMP2 has 6 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: Input data set is empty.
+NOTE: There were 0 observations read from the data set EMWS1.ENSMBL_FCMP.
+      WHERE id=3;
+NOTE: The data set WORK._TEMPID has 0 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: Deleting WORK._TEMPID (memtype=DATA).
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: Input data set is empty.
+NOTE: There were 0 observations read from the data set EMWS1.ENSMBL_FCMP.
+      WHERE id=4;
+NOTE: The data set WORK._TEMPID has 0 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: Deleting WORK._TEMPID (memtype=DATA).
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+13423  filename _pref "C:\Users\2001231F\Desktop\Predictive\Workspaces\EMWS1\Neural8\EMPUBLISHSCORE.sas";
+13424  proc FCMP NOEXECUTE IMPUTEDDEPS OUTDEPS=_temp;
+13425  %INCLUDE _pref;
+13833  run;
+ 
+NOTE: Dependency structure written to data set _TEMP.
+NOTE: PROCEDURE FCMP used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+13834  quit;
+13835  filename _pref;
+NOTE: Fileref _PREF has been deassigned.
+13836  data _temp(rename=(RHS=NAME));
+13837  length Node $32;
+13838  retain ID 2 Node "Neural8";
+13839  set _temp;
+13840  run;
+ 
+NOTE: There were 842 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK._TEMP has 842 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+13841  proc sort data=_temp;
+13842  by NAME;
+13843  run;
+ 
+NOTE: There were 842 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK._TEMP has 842 observations and 14 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+13844  proc sort data=EMWS1.Neural8_variableset out=_temp2(keep=NAME CREATOR);
+13845  by NAME;
+13846  run;
+ 
+NOTE: There were 6 observations read from the data set EMWS1.NEURAL8_VARIABLESET.
+NOTE: The data set WORK._TEMP2 has 6 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+13847  data _temp2;
+13848  length CREATOR $32;
+13849  set _temp2;
+13850  run;
+ 
+NOTE: There were 6 observations read from the data set WORK._TEMP2.
+NOTE: The data set WORK._TEMP2 has 6 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+13851  proc contents data=EMWS1.Neural8_train out=_meta(keep=NAME) noprint;
+13852  run;
+ 
+NOTE: The data set WORK._META has 11 observations and 1 variables.
+NOTE: PROCEDURE CONTENTS used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+ 
+ 
+13853  proc sort data=_meta;
+13854  by NAME;
+13855  run;
+ 
+NOTE: There were 11 observations read from the data set WORK._META.
+NOTE: The data set WORK._META has 11 observations and 1 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+13856  data _temp2;
+13857  merge _meta _temp2;
+13858  by NAME;
+13859  run;
+ 
+WARNING: Multiple lengths were specified for the BY variable NAME by input data sets. This might cause unexpected results.
+NOTE: There were 11 observations read from the data set WORK._META.
+NOTE: There were 6 observations read from the data set WORK._TEMP2.
+NOTE: The data set WORK._TEMP2 has 11 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+13860  proc sql;
+13861  create table _tempx as select p.node, p.lhs, p.id , p2.name, p2.CREATOR from work._temp p, work._temp2 p2 where upcase(p.NAME)=upcase(p2.NAME);
+NOTE: Table WORK._TEMPX created, with 243 rows and 5 columns.
+ 
+13862  quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+13863  proc append base=EMWS1.Ensmbl_FCMP data=_tempx;
+13864  run;
+ 
+NOTE: Appending WORK._TEMPX to EMWS1.ENSMBL_FCMP.
+NOTE: BASE data set does not exist. DATA file is being copied to BASE file.
+NOTE: There were 243 observations read from the data set WORK._TEMPX.
+NOTE: The data set EMWS1.ENSMBL_FCMP has 243 observations and 5 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+13865  %macro varDept(fcmpdata=,id=);
+13866  %global nobs&id scoreFlag&id;
+13867  %let scoreFlag&id = 0;
+13868  %if &id=1 or ^&fcmpStart %then %do;
+13869  proc sort data=&fcmpdata out=_temp&id nodupkey;
+13870  by NAME;
+13871  where id=&id and LHS in( %let j=1;
+13872  %do %while(%scan(_WARN_ P_premium, &j) ne );
+13873  %let var = %scan(_WARN_ P_premium, &j);
+13874  "&var" %let j = %eval(&j+1);
+13875  %end;
+13876  );
+13877  run;
+13878  %let dsid = %sysfunc(open(_temp&id));
+13879  %let nobs&id = %sysfunc(attrn(&dsid, NLOBSF));
+13880  %let dsid = %sysfunc(close(&dsid));
+13881  %if &&nobs&id %then %do;
+13882  %let scoreFlag&id = 1;
+13883  %let fcmpStart = 1;
+13884  %end;
+13885  %else %let fcmpStart = 0;
+13886  %end;
+13887  %else %do;
+13888  proc sort data=&fcmpdata out=_tempid;
+13889  where id=&id;
+13890  by LHS;
+13891  run;
+13892  %let dsid = %sysfunc(open(_tempid));
+13893  %let nobs&id = %sysfunc(attrn(&dsid, NLOBSF));
+13894  %let dsid = %sysfunc(close(&dsid));
+13895  %if ^&&nobs&id %then %do;
+13896  proc datasets lib=work nolist;
+13897  delete _tempid;
+13898  run;
+13899  quit;
+13900  %end;
+13901  %else %do;
+13902  data _tempAll;
+13903  set %let j=%eval(&id-1);
+13904  %do x=1 %to &j;
+13905  %if &&nobs&x %then %do;
+13906  _temp&x %end;
+13907  %end;
+13908  ;
+13909  run;
+13910  proc sql;
+13911  create table _temp&id as select p2.lhs, p2.name, p2.Node from work._tempAll p, work._tempid p2 where p.name=p2.lhs;
+13912  quit;
+13913  data _temp&id;
+13914  set _temp&id;
+13915  where LHS ne '' and NAME ne '' and Node ne '';
+13916  run;
+13917  proc datasets lib=work nolist;
+13918  delete _tempAll;
+13919  run;
+13920  %let dsid = %sysfunc(open(_temp&id));
+13921  %let nobs&id = %sysfunc(attrn(&dsid, NLOBSF));
+13922  %let dsid = %sysfunc(close(&dsid));
+13923  %if ^&&nobs&id %then %do;
+13924  proc datasets lib=work nolist;
+13925  delete _temp&id;
+13926  run;
+13927  quit;
+13928  %end;
+13929  %else %do;
+13930  %let scoreFlag&id = 1;
+13931  data _temp&id;
+13932  set _temp&id;
+13933  where LHS ne NAME and node ne '';
+13934  run;
+13935  %let dsid = %sysfunc(open(_temp&id));
+13936  %let nobs&id = %sysfunc(attrn(&dsid, NLOBSF));
+13937  %let dsid = %sysfunc(close(&dsid));
+13938  %if ^&&nobs&id %then %do;
+13939  proc datasets lib=work nolist;
+13940  delete _temp&id;
+13941  run;
+13942  quit;
+13943  %end;
+13944  %else %do;
+13945  proc sort data=_temp&id nodupkey;
+13946  by LHS NAME;
+13947  run;
+13948  %end;
+13949  %end;
+13950  %end;
+13951  %end;
+13952  %mend varDept;
+13953  %macro optCode(outdata=fcmpdata);
+13954  %global fcmpStart;
+13955  %let fcmpStart = 0;
+13956  %let outputVars = _WARN_ P_premium;
+13957  %let NumNodes=4;
+13958  %do k=1 %to &NumNodes;
+13959  %vardept(fcmpdata=&outdata, id=&k);
+13960  %end;
+13961  %mend optCode;
+13962  %optcode(outData=EMWS1.Ensmbl_FCMP);
+ 
+NOTE: Input data set is empty.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: There were 0 observations read from the data set EMWS1.ENSMBL_FCMP.
+      WHERE (id=1) and LHS in ('P_premium', '_WARN_');
+NOTE: The data set WORK._TEMP1 has 0 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: There were 11 observations read from the data set EMWS1.ENSMBL_FCMP.
+      WHERE (id=2) and LHS in ('P_premium', '_WARN_');
+NOTE: 5 observations with duplicate key values were deleted.
+NOTE: The data set WORK._TEMP2 has 6 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: Input data set is empty.
+NOTE: There were 0 observations read from the data set EMWS1.ENSMBL_FCMP.
+      WHERE id=3;
+NOTE: The data set WORK._TEMPID has 0 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: Deleting WORK._TEMPID (memtype=DATA).
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: Input data set is empty.
+NOTE: There were 0 observations read from the data set EMWS1.ENSMBL_FCMP.
+      WHERE id=4;
+NOTE: The data set WORK._TEMPID has 0 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: Deleting WORK._TEMPID (memtype=DATA).
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+13963  *------------------------------------------------------------*;
+13964  * Ensmbl: Computing metadata for TRAIN data;
+13965  *------------------------------------------------------------*;
+ 
+NOTE: View EMWS1.ENSMBL_TRAIN.VIEW used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+ 
+14315  data EMWS1.Ensmbl_EMINFO;
+14316  length TARGET KEY $32 DATA $43;
+14317  input TARGET KEY DATA $;
+14318  cards;
+ 
+NOTE: The data set EMWS1.ENSMBL_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+14322  run;
+14323  proc sort data = EMWS1.Ensmbl_EMINFO NOTHREADS;
+14324  by TARGET KEY;
+14325  run;
+ 
+NOTE: There were 3 observations read from the data set EMWS1.ENSMBL_EMINFO.
+NOTE: The data set EMWS1.ENSMBL_EMINFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+14326  proc sort data = EMWS1.Reg4_EMINFO OUT=WORK.SORTEDEMINFO NOTHREADS;
+14327  by TARGET KEY;
+14328  run;
+ 
+NOTE: Input data set is already sorted; it has been copied to the output data set.
+NOTE: There were 3 observations read from the data set EMWS1.REG4_EMINFO.
+NOTE: The data set WORK.SORTEDEMINFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+14329  proc sort data = EMWS1.Ensmbl_EMINFO OUT=WORK.TEMP_INFO NOTHREADS;
+14330  by TARGET KEY;
+14331  run;
+ 
+NOTE: Input data set is already sorted; it has been copied to the output data set.
+NOTE: There were 3 observations read from the data set EMWS1.ENSMBL_EMINFO.
+NOTE: The data set WORK.TEMP_INFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+14332  data EMWS1.Ensmbl_EMINFO;
+14333  merge WORK.SORTEDEMINFO WORK.TEMP_INFO;
+14334  by TARGET KEY;
+14335  run;
+ 
+NOTE: There were 3 observations read from the data set WORK.SORTEDEMINFO.
+NOTE: There were 3 observations read from the data set WORK.TEMP_INFO.
+NOTE: The data set EMWS1.ENSMBL_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+14336  proc datasets lib=work nolist;
+14337  delete TEMP_INFO SORTEDEMINFO;
+14338  run;
+ 
+NOTE: Deleting WORK.TEMP_INFO (memtype=DATA).
+NOTE: Deleting WORK.SORTEDEMINFO (memtype=DATA).
+14339  quit;
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+NOTE: View EMWS1.ENSMBL_TRAIN.VIEW used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.10 seconds
+ 
+NOTE: View EMWS1.ENSMBL_TEST.VIEW used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.11 seconds
+ 
+*------------------------------------------------------------*
+* Report Log
+Date:                04,June,2022
+Time:                22:25:56
+*------------------------------------------------------------*
+14363  data EMWS1.Ensmbl_EMOUTFIT;
+14364  set EMWS1.Ensmbl_EMOUTFIT;
+14365  length TargetLabel $200;
+14366  label targetLabel = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+14367  run;
+ 
+NOTE: Variable TargetLabel is uninitialized.
+NOTE: There were 1 observations read from the data set EMWS1.ENSMBL_EMOUTFIT.
+NOTE: The data set EMWS1.ENSMBL_EMOUTFIT has 1 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+14368  proc sort data=EMWS1.Ensmbl_EMREPORTFIT nothreads;
+14369  by TARGET;
+14370  run;
+ 
+NOTE: There were 6 observations read from the data set EMWS1.ENSMBL_EMREPORTFIT.
+NOTE: The data set EMWS1.ENSMBL_EMREPORTFIT has 6 observations and 7 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+14371  %let _EMwarndup = 0;
+14372  %let _EMtargetdup =;
+14373  %let _EMASEtargetdup =;
+14374  data _null_;
+14375  set EMWS1.Ensmbl_EMOUTFIT;
+14376  if .<_ASE_<0.000001 then do;
+14377  call symput('_EMwarndup', '1');
+14378  call symput('_EMtargetdup', target);
+14379  call symput('_EMASEtargetdup', put(_ASE_, best.));
+14380  end;
+14381  run;
+ 
+NOTE: There were 1 observations read from the data set EMWS1.ENSMBL_EMOUTFIT.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+14382  proc sort data=EMWS1.Reg4_CMeta_TRAIN out=WORK.SUBSETINMETA;
+14383  by NAME;
+14384  run;
+ 
+NOTE: There were 11 observations read from the data set EMWS1.REG4_CMETA_TRAIN.
+NOTE: The data set WORK.SUBSETINMETA has 11 observations and 21 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+14385  proc sort data=EMWS1.Ensmbl_VariableSet out=WORK.SUBSETVARSET(keep=NAME REPORT);
+14386  by NAME;
+14387  run;
+ 
+NOTE: There were 6 observations read from the data set EMWS1.ENSMBL_VARIABLESET.
+NOTE: The data set WORK.SUBSETVARSET has 6 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+14388  data WORK.ASSESS_META;
+14389  merge WORK.SUBSETINMETA WORK.SUBSETVARSET;
+14390  by NAME;
+14391  run;
+ 
+NOTE: There were 11 observations read from the data set WORK.SUBSETINMETA.
+NOTE: There were 6 observations read from the data set WORK.SUBSETVARSET.
+NOTE: The data set WORK.ASSESS_META has 11 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+14392  data EM_temp_assessMeta;
+14393  set EMWS1.Ensmbl_CMeta_TRAIN;
+14394  where role in('DECISION', 'PREDICT', 'RESIDUAL', 'CLASSIFICATION', 'ASSESS', 'COST');
+14395  run;
+ 
+NOTE: There were 3 observations read from the data set EMWS1.ENSMBL_CMETA_TRAIN.
+      WHERE role in ('ASSESS', 'CLASSIFICATION', 'COST', 'DECISION', 'PREDICT', 'RESIDUAL');
+NOTE: The data set WORK.EM_TEMP_ASSESSMETA has 3 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+14396  data EM_temp_assessdata;
+14397  set EMWS1.Ensmbl_TRAIN(keep=
+14398  P_premium
+14399  R_premium
+14400  _WARN_
+14401  premium
+14402  );
+14403  run;
+ 
+NOTE: There were 818 observations read from the data set EMWS1.PART4_TRAIN.
+NOTE: View EMWS1.ENSMBL_TRAIN.VIEW used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.15 seconds
+ 
+NOTE: There were 818 observations read from the data set EMWS1.REG4_TRAIN.
+NOTE: There were 818 observations read from the data set EMWS1.ENSMBL_TRAIN.
+NOTE: The data set WORK.EM_TEMP_ASSESSDATA has 818 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.18 seconds
+      cpu time            0.18 seconds
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+18734  %let _cn = %sysfunc(getoption(CENTER));
+18735  options nocenter;
+18736  proc print data=EMWS1.Ensmbl_EMREPORTFIT noobs label;
+18737  var STAT LABEL TRAIN
+18738  TEST
+18739  ;
+18740  by TARGET TARGETLABEL;
+18741  title9 ' ';
+18742  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_fitstat_title  , NOQUOTE))";
+18743  run;
+ 
+NOTE: There were 6 observations read from the data set EMWS1.ENSMBL_EMREPORTFIT.
+NOTE: The PROCEDURE PRINT printed page 4.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+18744  title10;
+18745  options &_cn;
+ 
+18746  proc datasets library=EMWS1 nolist;
+18747  modify Ensmbl_EMRANK;
+18748  label target = "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel ,   NOQUOTE))";
+18749  label datarole = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel ,    NOQUOTE))";
+18750  run;
+ 
+NOTE: MODIFY was successful for EMWS1.ENSMBL_EMRANK.DATA.
+18751  quit;
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+18752  %let _cn = %sysfunc(getoption(CENTER));
+18753  options nocenter;
+18754  proc print data=EMWS1.Ensmbl_EMRANK label noobs;
+18755  var
+18756  decile N _targetMean_ _meanP_;
+18757  by
+18758  notsorted DATAROLE
+18759  notsorted TARGET
+18760  notsorted TARGETLABEL
+18761  ;
+18762  title9 ' ';
+18763  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_scoreranking_title , NOQUOTE))";
+18764  run;
+ 
+NOTE: There were 20 observations read from the data set EMWS1.ENSMBL_EMRANK.
+NOTE: The PROCEDURE PRINT printed page 5.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+18765  title10;
+18766  options &_cn;
+ 
+18767  proc datasets library=EMWS1 nolist;
+18768  modify Ensmbl_EMSCOREDIST;
+18769  label target = "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel ,      NOQUOTE))";
+18770  label datarole = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel ,    NOQUOTE))";
+18771  run;
+ 
+NOTE: MODIFY was successful for EMWS1.ENSMBL_EMSCOREDIST.DATA.
+18772  quit;
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 

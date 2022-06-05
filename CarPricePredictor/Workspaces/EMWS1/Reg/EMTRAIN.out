@@ -1,0 +1,78 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+          Measurement    Frequency
+ Role        Level         Count
+
+INPUT      INTERVAL          1    
+INPUT      NOMINAL           1    
+TARGET     INTERVAL          1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Predicted and decision variables
+
+Type          Variable            Label
+
+TARGET       Adj_Prem                         
+PREDICTED    P_Adj_Prem    Predicted: Adj_Prem
+RESIDUAL     R_Adj_Prem    Residual: Adj_Prem 
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+               Model Information
+
+Training Data Set             WORK.EM_DMREG.VIEW
+DMDB Catalog                  WORK.REG_DMDB     
+Target Variable               Adj_Prem          
+Target Measurement Level      Interval          
+Error                         Normal            
+Link Function                 Identity          
+Number of Model Parameters    5                 
+Number of Observations        409               
+
+
+                             Analysis of Variance
+ 
+                                   Sum of
+Source                 DF         Squares     Mean Square    F Value    Pr > F
+
+Model                   4     42162909207     10540727302      52.22    <.0001
+Error                 404     81542005602       201836648                     
+Corrected Total       408    123704914809                                     
+
+
+              Model Fit Statistics
+
+R-Square        0.3408     Adj R-Sq        0.3343
+AIC          7826.2636     BIC          7828.3871
+SBC          7846.3322     C(p)            5.0000
+
+
+               Type 3 Analysis of Effects
+ 
+                              Sum of
+Effect              DF       Squares    F Value    Pr > F
+
+Adjusted_Quota       1    2.13606E10     105.83    <.0001
+vehicle_class        3    3.44724E10      56.93    <.0001
+
+
+                   Analysis of Maximum Likelihood Estimates
+ 
+                                               Standard
+Parameter                    DF    Estimate       Error    t Value    Pr > |t|
+
+Intercept                     1     64913.2      1396.7      46.47      <.0001
+Adjusted_Quota                1    -19.3793      1.8838     -10.29      <.0001
+vehicle_class  Category A     1      6206.7      1503.1       4.13      <.0001
+vehicle_class  Category B     1     10197.4      1278.4       7.98      <.0001
+vehicle_class  Category C     1    -17559.5      1395.1     -12.59      <.0001

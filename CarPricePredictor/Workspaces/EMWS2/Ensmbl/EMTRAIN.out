@@ -1,0 +1,35 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+          Measurement    Frequency
+ Role        Level         Count
+
+INPUT      INTERVAL          1    
+INPUT      NOMINAL           1    
+TARGET     INTERVAL          1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Predicted and decision variables
+
+Type          Variable            Label
+
+TARGET       Adj_Prem                         
+PREDICTED    P_Adj_Prem    Predicted: Adj_Prem
+RESIDUAL     R_Adj_Prem    Residual: Adj_Prem 
+ 
+                                                                                                                                                                                                                                                                
+ 
+Imported Models to be Combined
+Probability Function: Average
+
+           rpt_
+Node Id    modeltype
+
+REG        Regression
+NEURAL     Neural    
+NEURAL2    Neural    

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  NumberOfReportedLevels="1E-6" NormalizeReportingVariables="Y" DecileBin="20" LiftEpsilon="1E-6"
+ ProfitEpsilon="1E-6" RoiEpsilon="1E-6" ScoreDistBin="20" RocChart="Y" RocEpsilon="0.01"
+ AssessAllTargetLevels="N" SelectionData="DEFAULT" HPCriteria="DEFAULT" SelectionTable="TEST"
+ SelectionCriteria="_MSE_" SelectionDepth="10" NumberofBins="20" RecomputeAssess="N"
+ TargetName="Adj_Prem" ModelId="Reg2" ModelDescription="Regression" ModelCriteria="Test: Mean Square Error"
+ ForceRun="N" RunAction="Train" Component="ModelCompare" RawCreateTime="1969996433.3"
+ CreateTime="04JUN2022:21:13:53" StatisticUsed="_TMSE_" TargetLabel="" RunId="4f44d104-1994-4840-92b6-511addd8e1fc"
+>
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES ><![CDATA[
+EMNOTES
+]]>
+</FILEPROPERTIES><EMTARGETATTRIBUTES/>
+</_ROOT_>

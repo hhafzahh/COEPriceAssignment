@@ -1,0 +1,28 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Summary Statistics for Interval Targets
+
+Data=DATA
+
+                                                             Number of                     Standard
+Variable         Maximum            Mean         Minimum    Observations    Missing       Deviation    Label
+
+premium            99999    52499.666096           18502            1168       0       18109.668566         
+
+
+Data=TEST
+
+                                                             Number of                     Standard
+Variable         Maximum            Mean         Minimum    Observations    Missing       Deviation    Label
+
+premium            99999    53043.405714           19001             350       0        18582.94332         
+
+
+Data=TRAIN
+
+                                                             Number of                     Standard
+Variable         Maximum            Mean         Minimum    Observations    Missing       Deviation    Label
+
+premium            99010     52267.01467           18502             818       0       17909.844238         

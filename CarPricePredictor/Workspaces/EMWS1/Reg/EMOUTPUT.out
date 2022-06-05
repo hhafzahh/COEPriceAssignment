@@ -1,0 +1,187 @@
+*------------------------------------------------------------*
+User:                2001231F
+Date:                04,June,2022
+Time:                21:12:22
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+INPUT      INTERVAL          1
+INPUT      NOMINAL           1
+TARGET     INTERVAL          1
+ 
+ 
+ 
+ 
+Predicted and decision variables
+ 
+Type          Variable            Label
+ 
+TARGET       Adj_Prem
+PREDICTED    P_Adj_Prem    Predicted: Adj_Prem
+RESIDUAL     R_Adj_Prem    Residual: Adj_Prem
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+               Model Information
+ 
+Training Data Set             WORK.EM_DMREG.VIEW
+DMDB Catalog                  WORK.REG_DMDB
+Target Variable               Adj_Prem
+Target Measurement Level      Interval
+Error                         Normal
+Link Function                 Identity
+Number of Model Parameters    5
+Number of Observations        409
+ 
+ 
+                             Analysis of Variance
+ 
+                                   Sum of
+Source                 DF         Squares     Mean Square    F Value    Pr > F
+ 
+Model                   4     42162909207     10540727302      52.22    <.0001
+Error                 404     81542005602       201836648
+Corrected Total       408    123704914809
+ 
+ 
+              Model Fit Statistics
+ 
+R-Square        0.3408     Adj R-Sq        0.3343
+AIC          7826.2636     BIC          7828.3871
+SBC          7846.3322     C(p)            5.0000
+ 
+ 
+               Type 3 Analysis of Effects
+ 
+                              Sum of
+Effect              DF       Squares    F Value    Pr > F
+ 
+Adjusted_Quota       1    2.13606E10     105.83    <.0001
+vehicle_class        3    3.44724E10      56.93    <.0001
+ 
+ 
+                   Analysis of Maximum Likelihood Estimates
+ 
+                                               Standard
+Parameter                    DF    Estimate       Error    t Value    Pr > |t|
+ 
+Intercept                     1     64913.2      1396.7      46.47      <.0001
+Adjusted_Quota                1    -19.3793      1.8838     -10.29      <.0001
+vehicle_class  Category A     1      6206.7      1503.1       4.13      <.0001
+vehicle_class  Category B     1     10197.4      1278.4       7.98      <.0001
+vehicle_class  Category C     1    -17559.5      1395.1     -12.59      <.0001
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Fit Statistics
+ 
+Target=Adj_Prem Target Label=' '
+ 
+   Fit
+Statistics    Statistics Label                           Train              Test
+ 
+ _AIC_        Akaike's Information Criterion           7826.26               .
+ _ASE_        Average Squared Error               199369206.85      243381871.17
+ _AVERR_      Average Error Function              199369206.85      243381871.17
+ _DFE_        Degrees of Freedom for Error              404.00               .
+ _DFM_        Model Degrees of Freedom                    5.00               .
+ _DFT_        Total Degrees of Freedom                  409.00               .
+ _DIV_        Divisor for ASE                           409.00            175.00
+ _ERR_        Error Function                    81542005601.68    42591827454.05
+ _FPE_        Final Prediction Error              204304088.21               .
+ _MAX_        Maximum Absolute Error                  36466.49          40711.28
+ _MSE_        Mean Square Error                   201836647.53      243381871.17
+ _NOBS_       Sum of Frequencies                        409.00            175.00
+ _NW_         Number of Estimate Weights                  5.00               .
+ _RASE_       Root Average Sum of Squares             14119.82          15600.70
+ _RFPE_       Root Final Prediction Error             14293.50               .
+ _RMSE_       Root Mean Squared Error                 14206.92          15600.70
+ _SBC_        Schwarz's Bayesian Criterion             7846.33               .
+ _SSE_        Sum of Squared Errors             81542005601.68    42591827454.05
+ _SUMW_       Sum of Case Weights Times Freq            409.00            175.00
+ 
+ 
+ 
+ 
+Assessment Score Rankings
+ 
+Data Role=TRAIN Target Variable=Adj_Prem Target Label=' '
+ 
+           Number of       Mean         Mean
+Depth    Observations     Target     Predicted
+ 
+   5          21         77891.71     68384.08
+  10          20         68680.78     65750.49
+  15          21         72359.90     63749.69
+  20          20         77189.83     61668.70
+  25          21         65294.45     60858.20
+  30          20         61514.53     60060.37
+  35          21         55992.83     59250.69
+  40          20         48510.18     58323.50
+  45          21         48470.19     57042.65
+  50          20         44438.43     55656.49
+  55          20         41971.45     54300.18
+  60          21         38725.36     50982.89
+  65          20         46769.93     48444.99
+  70          21         47263.81     44581.95
+  75          21         46566.67     43719.33
+  80          20         43430.18     42841.29
+  85          20         42382.40     42091.20
+  90          21         34028.88     40546.21
+  95          20         40086.88     38082.19
+ 100          20         45873.70     30980.89
+ 
+ 
+ 
+ 
+Assessment Score Distribution
+ 
+Data Role=TRAIN Target Variable=Adj_Prem Target Label=' '
+ 
+                            Mean         Mean        Number of       Model
+ Range for Predicted       Target     Predicted    Observations      Score
+ 
+67098.852 -  69248.302    78613.07     68330.31         23         68173.58
+64949.402 -  67098.852    63304.08     65931.46         13         66024.13
+62799.952 -  64949.402    72994.08     63888.94         26         63874.68
+60650.502 -  62799.952    71473.71     61292.28         39         61725.23
+58501.052 -  60650.502    56609.18     59513.08         52         59575.78
+56351.602 -  58501.052    49313.92     57379.83         32         57426.33
+54202.152 -  56351.602    43633.61     55357.25         33         55276.88
+52052.702 -  54202.152    39974.13     53054.18          8         53127.43
+49903.252 -  52052.702    39086.40     50927.57         20         50977.98
+47753.802 -  49903.252    46091.74     48842.09         17         48828.53
+45604.352 -  47753.802    51322.63     46094.45          4         46679.08
+43454.902 -  45604.352    47115.37     44167.73         38         44529.63
+41305.452 -  43454.902    42214.81     42481.47         45         42380.18
+39156.002 -  41305.452    34809.40     40388.40         21         40230.73
+37006.552 -  39156.002    40466.64     38508.51         14         38081.28
+34857.102 -  37006.552    42499.60     35605.38          5         35931.83
+32707.652 -  34857.102    42508.80     34332.16          5         33782.38
+30558.201 -  32707.652    49064.64     31428.32          7         31632.93
+28408.751 -  30558.201    48915.50     30491.19          1         29483.48
+26259.301 -  28408.751    43677.83     27070.37          6         27334.03

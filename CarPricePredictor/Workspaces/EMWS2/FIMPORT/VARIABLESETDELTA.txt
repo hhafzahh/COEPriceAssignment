@@ -1,0 +1,6 @@
+if NAME="Adj_Prem" then do;
+ROLE="TARGET";
+LEVEL="INTERVAL";
+ORDER="";
+DROP="N";
+end;

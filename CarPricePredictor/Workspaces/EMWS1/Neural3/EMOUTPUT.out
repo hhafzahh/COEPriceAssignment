@@ -1,0 +1,298 @@
+*------------------------------------------------------------*
+User:                2001231F
+Date:                04,June,2022
+Time:                21:15:05
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+INPUT      INTERVAL          1
+INPUT      NOMINAL           1
+TARGET     INTERVAL          1
+ 
+ 
+ 
+ 
+Predicted and decision variables
+ 
+Type          Variable            Label
+ 
+TARGET       Adj_Prem
+PREDICTED    P_Adj_Prem    Predicted: Adj_Prem
+RESIDUAL     R_Adj_Prem    Residual: Adj_Prem
+ 
+ 
+ 
+ 
+ 
+The NEURAL Procedure
+ 
+Preliminary       Starting         Objective         Number
+ Training          Random           Function           of        Terminating
+    Run             Seed             Value         Iterations     Criteria
+ 
+        1               12345    127487960.7948           10
+        2           389956261    125924071.7918           10
+        3          1718339575    120764132.8788           10
+        4           463937847    120286568.5925           10
+        5          1797629599    130954199.1044           10
+ 
+ 
+ 
+ 
+ 
+The NEURAL Procedure
+ 
+                  Optimization Start
+                  Parameter Estimates
+                                              Gradient
+                                             Objective
+  N Parameter                 Estimate        Function
+ 
+  1 Adjusted_Quota_H11        2.275373        -1097256
+  2 Adjusted_Quota_H12        0.154113           13583
+  3 Adjusted_Quota_H13        1.524900         -256654
+  4 BIAS_H11                  0.467996          720195
+  5 BIAS_H12                 -0.303677         -284876
+  6 BIAS_H13                  2.754420           57731
+  7 H11_Adj_Prem                -17559     -290.146625
+  8 H12_Adj_Prem          -9124.214295      -18.019788
+  9 H13_Adj_Prem          -4091.129187       78.542088
+ 10 BIAS_Adj_Prem                63087       60.450715
+ 
+Value of Objective Function = 120286568.59
+ 
+ 
+ 
+ 
+ 
+ 
+The NEURAL Procedure
+ 
+Levenberg-Marquardt Optimization
+ 
+ 
+Minimum Iterations                                0
+Maximum Iterations                               50
+Maximum Function Calls                   2147483647
+Maximum CPU Time                              14400
+ABSGCONV Gradient Criterion                 0.00001
+GCONV Gradient Criterion                       1E-8
+GCONV2 Gradient Criterion                         0
+ABSFCONV Function Criterion                       0
+FCONV Function Criterion                     0.0001
+FCONV2 Function Criterion                         0
+FSIZE Parameter                                   0
+ABSXCONV Parameter Change Criterion               0
+XCONV Parameter Change Criterion                  0
+XSIZE Parameter                                   0
+ABSCONV Function Criterion             370767.28823
+Trust Region Initial Radius Factor                1
+Singularity Tolerance (SINGULAR)               1E-8
+ 
+Levenberg-Marquardt Optimization
+ 
+Scaling Update of More (1978)
+ 
+Parameter Estimates              10
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       120286568.59
+Max Abs Gradient Element                 1097256.0827  Radius                                    10382963495
+ 
+ 
+                                                                                                         Ratio
+                                                                                                       Between
+                                                                                                        Actual
+                                                                 Objective     Max Abs                     and
+                     Function         Active        Objective     Function    Gradient               Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Lambda       Change
+ 
+   1            0           5              0        120050715       235854     8650959    0.00879        0.111
+   2            0           7              0        118057005      1993710     2991491     0.0784        0.965
+   3            0           8              0        116374550      1682456     8248830     0.0194        0.883
+   4            0           9              0        114180433      2194117     5352624    0.00514        0.756
+   5            0          11              0        113095121      1085312      709898     0.0368        0.987
+   6            0          12              0        112698592       396529     3499023     0.0102        0.813
+   7            0          14              0        112511270       187322      886131     0.0273        1.013
+   8            0          15              0        112300524       210746     1913692     0.0129        0.895
+   9            0          16              0        112132955       167569     2491206    0.00631        0.331
+  10            0          17              0        111072020      1060935     1814771    0.00684        1.064
+  11            0          18              0        109824847      1247173     2743159    0.00396        0.961
+  12            0          19              0        107965022      1859825     3149901    0.00137        0.908
+  13            0          21              0        107590700       374322      387327    0.00327        1.042
+  14            0          22              0        107353093       237606      616472    0.00118        0.864
+  15            0          24              0        107238226       114868      745883    0.00123        0.992
+  16            0          25              0        107090067       148159     1045487    0.00049        0.848
+  17            0          26              0        106939070       150996      664973    0.00009        0.699
+  18            0          27              0        106817420       121650      851089          0        1.111
+  19            0          29              0        106708908       108513      215759    0.00006        0.885
+  20            0          31              0        106642275      66632.4     1069554    0.00013        0.520
+  21            0          33              0        106561669      80606.8      263634    0.00049        0.605
+  22            0          34              0        106517194      44474.8      403515    0.00144        0.606
+  23            0          35              0        106466183      51010.5      275062    0.00057        1.357
+  24            0          36              0        106402420      63762.8      496029    0.00032        1.051
+  25            0          37              0        106311687      90733.5      726713    0.00005        1.238
+  26            0          38              0        106221806      89880.7      204457          0        1.439
+  27            0          39              0        106174158      47647.7      322667    0.00010        0.920
+  28            0          40              0        106122098      52060.3      377016    8.56E-6        1.134
+  29            0          41              0        106080654      41444.0     87985.4          0        1.394
+  30            0          42              0        106049731      30923.3     90527.1    5.86E-6        1.213
+  31            0          43              0        105978565      71165.9     19161.0    2.27E-6        1.485
+  32            0          44              0        105845279       133286     52584.9    5.62E-7        0.959
+  33            0          48              0        105844827        452.1      140609    0.00002       0.0177
+  34            0          49              0        105838037       6789.9     19670.2    0.00012        0.298
+  35            0          50              0        105837087        950.0     26081.8    0.00002       0.0722
+  36            0          51              0        105836461        625.5     17770.9    0.00018       0.0467
+  37            0          52              0        105831094       5367.6     18345.7    0.00091        0.625
+  38            0          53              0        105830685        408.6       937.0    0.00007        0.963
+  39            0          54              0        105829920        765.5      1302.6    0.00003        0.971
+  40            0          55              0        105828489       1430.9      2178.4    0.00002        0.961
+  41            0          56              0        105824871       3617.9      5136.7    4.05E-6        0.923
+  42            0          57              0        105820668       4202.9      6070.5    1.16E-6        0.828
+ 
+                                            Optimization Results
+ 
+Iterations                                         42  Function Calls                                     59
+Jacobian Calls                                     44  Active Constraints                                  0
+Objective Function                       105820667.88  Max Abs Gradient Element                 6070.5280928
+Lambda                                   1.1619555E-6  Actual Over Pred Change                   0.827746457
+Radius                                   117258.43235
+ 
+Convergence criterion (FCONV=0.0001) satisfied.
+ 
+NOTE: At least one element of the gradient is greater than 1e-3.
+ 
+ 
+ 
+ 
+ 
+ 
+The NEURAL Procedure
+ 
+                 Optimization Results
+                  Parameter Estimates
+                                              Gradient
+                                             Objective
+  N Parameter                 Estimate        Function
+ 
+  1 Adjusted_Quota_H11       13.417696    -1522.598584
+  2 Adjusted_Quota_H12        5.149990     1061.218168
+  3 Adjusted_Quota_H13      174.732130    -5322.339691
+  4 BIAS_H11                  0.066435    -1950.773941
+  5 BIAS_H12                 -8.998399      131.643499
+  6 BIAS_H13                147.312826     6070.528093
+  7 H11_Adj_Prem                -12095       -0.512734
+  8 H12_Adj_Prem          -8395.895262       -0.541962
+  9 H13_Adj_Prem          -6782.525923        0.987657
+ 10 BIAS_Adj_Prem                56218        0.545121
+ 
+Value of Objective Function = 105820667.88
+ 
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Fit Statistics
+ 
+Target=Adj_Prem Target Label=' '
+ 
+   Fit
+Statistics    Statistics Label                            Train             Test
+ 
+ _DFT_        Total Degrees of Freedom                   102.00              .
+ _DFE_        Degrees of Freedom for Error                92.00              .
+ _DFM_        Model Degrees of Freedom                    10.00              .
+ _NW_         Number of Estimated Weights                 10.00              .
+ _AIC_        Akaike's Information Criterion            1904.68              .
+ _SBC_        Schwarz's Bayesian Criterion              1930.93              .
+ _ASE_        Average Squared Error                105820667.88     180753237.67
+ _MAX_        Maximum Absolute Error                   26280.87         37387.86
+ _DIV_        Divisor for ASE                            102.00            44.00
+ _NOBS_       Sum of Frequencies                         102.00            44.00
+ _RASE_       Root Average Squared Error               10286.92         13444.45
+ _SSE_        Sum of Squared Errors              10793708123.54    7953142457.43
+ _SUMW_       Sum of Case Weights Times Freq             102.00            44.00
+ _FPE_        Final Prediction Error               128825160.89              .
+ _MSE_        Mean Squared Error                   117322914.39     180753237.67
+ _RFPE_       Root Final Prediction Error              11350.12              .
+ _RMSE_       Root Mean Squared Error                  10831.57         13444.45
+ _AVERR_      Average Error Function               105820667.88     180753237.67
+ _ERR_        Error Function                     10793708123.54    7953142457.43
+ _MISC_       Misclassification Rate                        .                .
+ _WRONG_      Number of Wrong Classifications               .                .
+ 
+ 
+ 
+ 
+Assessment Score Rankings
+ 
+Data Role=TRAIN Target Variable=Adj_Prem Target Label=' '
+ 
+           Number of       Mean         Mean
+Depth    Observations     Target     Predicted
+ 
+   5          14         81576.11     83491.66
+  15           4         84061.00     83491.66
+  20           3         90137.33     81954.45
+  25           5         71482.90     70440.88
+  30           5         75689.10     69926.78
+  35           5         65840.00     69926.55
+  40           5         73639.30     69926.27
+  45           6         68165.50     69915.68
+  50           4         62194.38     69847.58
+  55           7         62229.71     61449.38
+  60           4         50165.00     50385.66
+  65           5         43436.00     45926.03
+  70           5         40686.80     45780.16
+  75           5         48796.70     45736.33
+  80           5         45469.00     45734.38
+  85           5         53106.00     45412.69
+  90           5         42878.50     43850.10
+  95           5         40547.90     40706.95
+ 100           5         33042.60     33948.07
+ 
+ 
+ 
+ 
+Assessment Score Distribution
+ 
+Data Role=TRAIN Target Variable=Adj_Prem Target Label=' '
+ 
+                            Mean         Mean        Number of       Model
+ Range for Predicted       Target     Predicted    Observations      Score
+ 
+80850.714 -  83491.660    83490.83     83491.66         20         82171.19
+78209.768 -  80850.714    78905.00     78880.04          1         79530.24
+70286.930 -  72927.876    71528.50     71172.98          2         71607.40
+67645.984 -  70286.930    69782.45     69851.53         30         68966.46
+65005.037 -  67645.984    71650.50     65717.37          1         66325.51
+57082.199 -  59723.145    40257.00     58332.48          1         58402.67
+54441.253 -  57082.199    59399.00     56063.57          3         55761.73
+51800.307 -  54441.253    59400.50     53703.43          1         53120.78
+49159.361 -  51800.307    51432.25     50779.80          2         50479.83
+43877.469 -  46518.415    45825.17     45576.83         29         45197.94
+41236.523 -  43877.469    38808.80     42600.00          5         42557.00
+38595.577 -  41236.523    38650.00     39530.48          1         39916.05
+35954.631 -  38595.577    41858.50     36783.64          3         37275.10
+33313.685 -  35954.631    31905.00     34902.52          1         34634.16
+30672.739 -  33313.685    29554.00     31120.57          2         31993.21

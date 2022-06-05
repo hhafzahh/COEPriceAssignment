@@ -1,0 +1,198 @@
+*------------------------------------------------------------*
+* Report Log
+Date:                04,June,2022
+Time:                21:48:25
+*------------------------------------------------------------*
+13269  data EMWS1.Ensmbl3_EMOUTFIT;
+13270  set EMWS1.Ensmbl3_EMOUTFIT;
+13271  length TargetLabel $200;
+13272  label targetLabel = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+13273  run;
+
+NOTE: Variable TargetLabel is uninitialized.
+NOTE: There were 1 observations read from the data set EMWS1.ENSMBL3_EMOUTFIT.
+NOTE: The data set EMWS1.ENSMBL3_EMOUTFIT has 1 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+13274  proc sort data=EMWS1.Ensmbl3_EMREPORTFIT nothreads;
+13275  by TARGET;
+13276  run;
+
+NOTE: There were 6 observations read from the data set EMWS1.ENSMBL3_EMREPORTFIT.
+NOTE: The data set EMWS1.ENSMBL3_EMREPORTFIT has 6 observations and 7 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+13277  %let _EMwarndup = 0;
+13278  %let _EMtargetdup =;
+13279  %let _EMASEtargetdup =;
+13280  data _null_;
+13281  set EMWS1.Ensmbl3_EMOUTFIT;
+13282  if .<_ASE_<0.000001 then do;
+13283  call symput('_EMwarndup', '1');
+13284  call symput('_EMtargetdup', target);
+13285  call symput('_EMASEtargetdup', put(_ASE_, best.));
+13286  end;
+13287  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.ENSMBL3_EMOUTFIT.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+13288  proc sort data=EMWS1.Reg2_CMeta_TRAIN out=WORK.SUBSETINMETA;
+13289  by NAME;
+13290  run;
+
+NOTE: There were 8 observations read from the data set EMWS1.REG2_CMETA_TRAIN.
+NOTE: The data set WORK.SUBSETINMETA has 8 observations and 21 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+13291  proc sort data=EMWS1.Ensmbl3_VariableSet out=WORK.SUBSETVARSET(keep=NAME REPORT);
+13292  by NAME;
+13293  run;
+
+NOTE: There were 3 observations read from the data set EMWS1.ENSMBL3_VARIABLESET.
+NOTE: The data set WORK.SUBSETVARSET has 3 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+13294  data WORK.ASSESS_META;
+13295  merge WORK.SUBSETINMETA WORK.SUBSETVARSET;
+13296  by NAME;
+13297  run;
+
+NOTE: There were 8 observations read from the data set WORK.SUBSETINMETA.
+NOTE: There were 3 observations read from the data set WORK.SUBSETVARSET.
+NOTE: The data set WORK.ASSESS_META has 8 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+13298  data EM_temp_assessMeta;
+13299  set EMWS1.Ensmbl3_CMeta_TRAIN;
+13300  where role in('DECISION', 'PREDICT', 'RESIDUAL', 'CLASSIFICATION', 'ASSESS', 'COST');
+13301  run;
+
+NOTE: There were 3 observations read from the data set EMWS1.ENSMBL3_CMETA_TRAIN.
+      WHERE role in ('ASSESS', 'CLASSIFICATION', 'COST', 'DECISION', 'PREDICT', 'RESIDUAL');
+NOTE: The data set WORK.EM_TEMP_ASSESSMETA has 3 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+13302  data EM_temp_assessdata;
+13303  set EMWS1.Ensmbl3_TRAIN(keep=
+13304  P_Adj_Prem
+13305  R_Adj_Prem
+13306  _WARN_
+13307  Adj_Prem
+13308  );
+13309  run;
+
+NOTE: There were 102 observations read from the data set EMWS1.PART2_TRAIN.
+NOTE: View EMWS1.ENSMBL3_TRAIN.VIEW used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.11 seconds
+      
+NOTE: There were 102 observations read from the data set EMWS1.REG2_TRAIN.
+NOTE: There were 102 observations read from the data set EMWS1.ENSMBL3_TRAIN.
+NOTE: The data set WORK.EM_TEMP_ASSESSDATA has 102 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.11 seconds
+      
+
+
+
+
+
+
+
+
+17640  %let _cn = %sysfunc(getoption(CENTER));
+17641  options nocenter;
+17642  proc print data=EMWS1.Ensmbl3_EMREPORTFIT noobs label;
+17643  var STAT LABEL TRAIN
+17644  TEST
+17645  ;
+17646  by TARGET TARGETLABEL;
+17647  title9 ' ';
+17648  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_fitstat_title  , NOQUOTE))";
+17649  run;
+
+NOTE: There were 6 observations read from the data set EMWS1.ENSMBL3_EMREPORTFIT.
+NOTE: The PROCEDURE PRINT printed page 4.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+17650  title10;
+17651  options &_cn;
+
+17652  proc datasets library=EMWS1 nolist;
+17653  modify Ensmbl3_EMRANK;
+17654  label target = "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel ,   NOQUOTE))";
+17655  label datarole = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel ,    NOQUOTE))";
+17656  run;
+
+NOTE: MODIFY was successful for EMWS1.ENSMBL3_EMRANK.DATA.
+17657  quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+17658  %let _cn = %sysfunc(getoption(CENTER));
+17659  options nocenter;
+17660  proc print data=EMWS1.Ensmbl3_EMRANK label noobs;
+17661  var
+17662  decile N _targetMean_ _meanP_;
+17663  by
+17664  notsorted DATAROLE
+17665  notsorted TARGET
+17666  notsorted TARGETLABEL
+17667  ;
+17668  title9 ' ';
+17669  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_scoreranking_title , NOQUOTE))";
+17670  run;
+
+NOTE: There were 20 observations read from the data set EMWS1.ENSMBL3_EMRANK.
+NOTE: The PROCEDURE PRINT printed page 5.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17671  title10;
+17672  options &_cn;
+
+17673  proc datasets library=EMWS1 nolist;
+17674  modify Ensmbl3_EMSCOREDIST;
+17675  label target = "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel ,      NOQUOTE))";
+17676  label datarole = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel ,    NOQUOTE))";
+17677  run;
+
+NOTE: MODIFY was successful for EMWS1.ENSMBL3_EMSCOREDIST.DATA.
+17678  quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+

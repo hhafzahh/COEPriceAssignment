@@ -1,0 +1,287 @@
+*------------------------------------------------------------*
+User:                2001231F
+Date:                04,June,2022
+Time:                21:12:16
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+INPUT      INTERVAL          1
+INPUT      NOMINAL           1
+TARGET     INTERVAL          1
+ 
+ 
+ 
+ 
+Predicted and decision variables
+ 
+Type          Variable            Label
+ 
+TARGET       Adj_Prem
+PREDICTED    P_Adj_Prem    Predicted: Adj_Prem
+RESIDUAL     R_Adj_Prem    Residual: Adj_Prem
+ 
+ 
+ 
+ 
+ 
+The NEURAL Procedure
+ 
+Preliminary       Starting         Objective         Number
+ Training          Random           Function           of        Terminating
+    Run             Seed             Value         Iterations     Criteria
+ 
+        1               12345    252346461.2518            6      ABSGCONV
+        2           494012387     203499959.818           10
+        3           936745137    274474326.8044           10
+        4           337281485     203716463.277           10
+        5            42129862    240645174.4743           10
+ 
+ 
+ 
+ 
+ 
+The NEURAL Procedure
+ 
+                      Optimization Start
+                      Parameter Estimates
+                                                      Gradient
+                                                     Objective
+  N Parameter                         Estimate        Function
+ 
+  1 Adjusted_Quota_H11              -93.812534       -0.101119
+  2 Adjusted_Quota_H12               97.828019        -1603852
+  3 Adjusted_Quota_H13               14.598806               0
+  4 vehicle_classCategoryA_H11       -4.719831       -0.040266
+  5 vehicle_classCategoryB_H11       32.595597               0
+  6 vehicle_classCategoryC_H11      -90.312279               0
+  7 vehicle_classCategoryA_H12      -43.980858        -1003551
+  8 vehicle_classCategoryB_H12      -91.765987         -850853
+  9 vehicle_classCategoryC_H12       76.695634          502790
+ 10 vehicle_classCategoryA_H13      -52.753437               0
+ 11 vehicle_classCategoryB_H13      -27.669982               0
+ 12 vehicle_classCategoryC_H13     -146.678473               0
+ 13 BIAS_H11                        248.092663       -0.040266
+ 14 BIAS_H12                         -5.187113          874767
+ 15 BIAS_H13                        105.244897               0
+ 16 H11_Adj_Prem                  -1656.013400       41.920711
+ 17 H12_Adj_Prem                  -5132.258617     8478.406723
+ 18 H13_Adj_Prem                   4351.818625    -4092.450908
+ 19 BIAS_Adj_Prem                        51299      306.008360
+ 
+Value of Objective Function = 203499959.82
+ 
+ 
+ 
+ 
+ 
+ 
+The NEURAL Procedure
+ 
+Levenberg-Marquardt Optimization
+ 
+ 
+Minimum Iterations                                0
+Maximum Iterations                               50
+Maximum Function Calls                   2147483647
+Maximum CPU Time                              14400
+ABSGCONV Gradient Criterion                 0.00001
+GCONV Gradient Criterion                       1E-8
+GCONV2 Gradient Criterion                         0
+ABSFCONV Function Criterion                       0
+FCONV Function Criterion                     0.0001
+FCONV2 Function Criterion                         0
+FSIZE Parameter                                   0
+ABSXCONV Parameter Change Criterion               0
+XCONV Parameter Change Criterion                  0
+XSIZE Parameter                                   0
+ABSCONV Function Criterion             303198.32061
+Trust Region Initial Radius Factor                1
+Singularity Tolerance (SINGULAR)               1E-8
+ 
+Levenberg-Marquardt Optimization
+ 
+Scaling Update of More (1978)
+ 
+Parameter Estimates              19
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       203499959.82
+Max Abs Gradient Element                 1603852.3963  Radius                                   1707934829.1
+ 
+ 
+                                                                                                         Ratio
+                                                                                                       Between
+                                                                                                        Actual
+                                                                 Objective     Max Abs                     and
+                     Function         Active        Objective     Function    Gradient               Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Lambda       Change
+ 
+   1*           0           4              0        187264843     16235117     4153023    7.42E-6        0.512
+   2*           0           8              0        178297050      8967793     3642109     1774.2        1.172
+   3*           0           9              0        176212433      2084618     1601727      150.9        0.360
+   4*           0          11              0        174748808      1463625      112192      18754        1.001
+   5*           0          13              0        174745888       2919.4      623609     2799.5       0.0289
+   6*           0          15              0        174696883      49004.9      114107     319183        0.692
+   7*           0          16              0        174691120       5763.3     91109.6      45741        0.889
+   8*           0          17              0        174685453       5666.9     16463.6      17631        0.737
+   9*           0          18              0        174683046       2407.1      119582      15894        0.312
+  10*           0          20              0        174680049       2996.8     69074.1      57051        0.374
+  11*           0          21              0        174678350       1699.5     63959.1      35770        0.391
+  12*           0          22              0        174676688       1661.9     54346.8      34459        0.414
+  13*           0          23              0        174675028       1660.1     59128.0      32314        0.446
+  14*           0          24              0        174673366       1662.3     49988.1      30938        0.476
+  15*           0          25              0        174671695       1670.8     54322.4      30167        0.493
+  16*           0          26              0        174670006       1688.3     47455.1      29136        0.522
+ 
+                                            Optimization Results
+ 
+Iterations                                         16  Function Calls                                     28
+Jacobian Calls                                     18  Active Constraints                                  0
+Objective Function                       174670006.45  Max Abs Gradient Element                 47455.128837
+Lambda                                    29135.53308  Actual Over Pred Change                  0.5222924028
+Radius                                   0.8959511005
+ 
+Convergence criterion (FCONV=0.0001) satisfied.
+ 
+NOTE: At least one element of the gradient is greater than 1e-3.
+ 
+ 
+ 
+ 
+ 
+ 
+The NEURAL Procedure
+ 
+                     Optimization Results
+                      Parameter Estimates
+                                                      Gradient
+                                                     Objective
+  N Parameter                         Estimate        Function
+ 
+  1 Adjusted_Quota_H11                -2008727               0
+  2 Adjusted_Quota_H12               91.668827     -628.522444
+  3 Adjusted_Quota_H13               -6.036467           17910
+  4 vehicle_classCategoryA_H11         2400069               0
+  5 vehicle_classCategoryB_H11       32.595597               0
+  6 vehicle_classCategoryC_H11      -90.312279               0
+  7 vehicle_classCategoryA_H12      -37.361208      334.232924
+  8 vehicle_classCategoryB_H12      -82.783182       16.937009
+  9 vehicle_classCategoryC_H12       68.208287     -288.845692
+ 10 vehicle_classCategoryA_H13      -50.641084          -46659
+ 11 vehicle_classCategoryB_H13      -36.102126     -796.390756
+ 12 vehicle_classCategoryC_H13     -165.342662               0
+ 13 BIAS_H11                           2400322               0
+ 14 BIAS_H12                         -2.875316      -66.941849
+ 15 BIAS_H13                         49.449287          -47455
+ 16 H11_Adj_Prem                  -2447.506589    -4060.667840
+ 17 H12_Adj_Prem                  -9886.304449     -537.058613
+ 18 H13_Adj_Prem                   7915.235581      799.498876
+ 19 BIAS_Adj_Prem                        49246    -5262.568075
+ 
+Value of Objective Function = 174670006.45
+ 
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Fit Statistics
+ 
+Target=Adj_Prem Target Label=' '
+ 
+   Fit
+Statistics    Statistics Label                            Train              Test
+ 
+ _DFT_        Total Degrees of Freedom                   409.00               .
+ _DFE_        Degrees of Freedom for Error               390.00               .
+ _DFM_        Model Degrees of Freedom                    19.00               .
+ _NW_         Number of Estimated Weights                 19.00               .
+ _AIC_        Akaike's Information Criterion            7800.17               .
+ _SBC_        Schwarz's Bayesian Criterion              7876.43               .
+ _ASE_        Average Squared Error                174670006.45      224687251.83
+ _MAX_        Maximum Absolute Error                   38592.99          43804.59
+ _DIV_        Divisor for ASE                            409.00            175.00
+ _NOBS_       Sum of Frequencies                         409.00            175.00
+ _RASE_       Root Average Squared Error               13216.28          14989.57
+ _SSE_        Sum of Squared Errors              71440032637.55    39320269069.80
+ _SUMW_       Sum of Case Weights Times Freq             409.00            175.00
+ _FPE_        Final Prediction Error               191689135.28               .
+ _MSE_        Mean Squared Error                   183179570.87      224687251.83
+ _RFPE_       Root Final Prediction Error              13845.18               .
+ _RMSE_       Root Mean Squared Error                  13534.38          14989.57
+ _AVERR_      Average Error Function               174670006.45      224687251.83
+ _ERR_        Error Function                     71440032637.55    39320269069.80
+ _MISC_       Misclassification Rate                        .                 .
+ _WRONG_      Number of Wrong Classifications               .                 .
+ 
+ 
+ 
+ 
+Assessment Score Rankings
+ 
+Data Role=TRAIN Target Variable=Adj_Prem Target Label=' '
+ 
+           Number of       Mean         Mean
+Depth    Observations     Target     Predicted
+ 
+   5          78         74637.42     64599.59
+  20           4         62234.25     64599.59
+  25          21         52422.48     64599.59
+  30          20         66573.00     64525.60
+  35          21         61229.24     59978.37
+  40          20         49333.23     51733.77
+  45          21         48615.31     49720.11
+  50          55         47059.30     48845.90
+  60           6         44438.58     48769.12
+  65          20         48060.95     48617.68
+  70          49         44062.20     44913.73
+  80          24         46733.50     36676.48
+  85          10         31813.05     30433.16
+  90          20         34944.08     28996.70
+  95          40         38131.78     28996.51
+ 
+ 
+ 
+ 
+Assessment Score Distribution
+ 
+Data Role=TRAIN Target Variable=Adj_Prem Target Label=' '
+ 
+                            Mean         Mean        Number of       Model
+ Range for Predicted       Target     Predicted    Observations      Score
+ 
+62819.433 -  64599.587    69341.65     64559.59         130        63709.51
+59259.125 -  61039.279    40257.00     59936.42           1        60149.20
+57478.971 -  59259.125    54688.71     58653.91           7        58369.05
+55698.817 -  57478.971    59027.21     56684.55           7        56588.89
+53918.663 -  55698.817    52298.38     54824.69           4        54808.74
+52138.509 -  53918.663    64287.75     53229.85           2        53028.59
+50358.355 -  52138.509    48701.20     50740.76           5        51248.43
+48578.201 -  50358.355    47012.95     49077.89         105        49468.28
+46798.047 -  48578.201    48836.60     48282.59           5        47688.12
+45017.893 -  46798.047    43382.50     46164.99           3        45907.97
+43237.739 -  45017.893    44118.60     44831.61          51        44127.82
+39677.431 -  41457.585    51946.00     41290.29           1        40567.51
+37897.277 -  39677.431    38551.00     38654.73           1        38787.35
+32556.815 -  34336.969    45581.63     33820.55          19        33446.89
+30776.661 -  32556.815    29845.50     31667.54           1        31666.74
+28996.507 -  30776.661    36661.87     29045.13          67        29886.58

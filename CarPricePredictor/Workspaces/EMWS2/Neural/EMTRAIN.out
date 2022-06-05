@@ -1,0 +1,201 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+          Measurement    Frequency
+ Role        Level         Count
+
+INPUT      INTERVAL          1    
+INPUT      NOMINAL           1    
+TARGET     INTERVAL          1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Predicted and decision variables
+
+Type          Variable            Label
+
+TARGET       Adj_Prem                         
+PREDICTED    P_Adj_Prem    Predicted: Adj_Prem
+RESIDUAL     R_Adj_Prem    Residual: Adj_Prem 
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+Preliminary       Starting         Objective         Number
+ Training          Random           Function           of        Terminating
+    Run             Seed             Value         Iterations     Criteria
+
+        1               12345    321401305.3739           10                
+        2           389325501    227703262.3849           10                
+        3           463937847    314681235.1807           10                
+        4          1190861051    194664910.1716           10                
+        5           866987325    278927933.2334           10                
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+                      Optimization Start
+                      Parameter Estimates
+                                                      Gradient
+                                                     Objective
+  N Parameter                         Estimate        Function
+
+  1 Adjusted_Quota_H11               -1.117893        10523434
+  2 Adjusted_Quota_H12               -0.977397          290085
+  3 Adjusted_Quota_H13               -1.086389        10165418
+  4 vehicle_classCategoryB_H11        0.508241        -4593246
+  5 vehicle_classCategoryB_H12       -0.927251         1558236
+  6 vehicle_classCategoryB_H13        0.070752         3727153
+  7 BIAS_H11                         -0.209545        -1013458
+  8 BIAS_H12                         -0.219053        -3304134
+  9 BIAS_H13                         -0.609903         6950529
+ 10 H11_Adj_Prem                         15784     -319.214850
+ 11 H12_Adj_Prem                  -3001.882160      666.800613
+ 12 H13_Adj_Prem                         10030     -517.215629
+ 13 BIAS_Adj_Prem                        63122     -860.434326
+
+Value of Objective Function = 194664910.17
+
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+Levenberg-Marquardt Optimization
+
+
+Minimum Iterations                                0
+Maximum Iterations                               50
+Maximum Function Calls                   2147483647
+Maximum CPU Time                              14400
+ABSGCONV Gradient Criterion                 0.00001
+GCONV Gradient Criterion                       1E-8
+GCONV2 Gradient Criterion                         0
+ABSFCONV Function Criterion                       0
+FCONV Function Criterion                     0.0001
+FCONV2 Function Criterion                         0
+FSIZE Parameter                                   0
+ABSXCONV Parameter Change Criterion               0
+XCONV Parameter Change Criterion                  0
+XSIZE Parameter                                   0
+ABSCONV Function Criterion             371086.50321
+Trust Region Initial Radius Factor                1
+Singularity Tolerance (SINGULAR)               1E-8
+
+Levenberg-Marquardt Optimization
+
+Scaling Update of More (1978)
+
+Parameter Estimates              13
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                       194664910.17
+Max Abs Gradient Element                  10523433.65  Radius                                   179898733826
+
+
+                                                                                                         Ratio
+                                                                                                       Between
+                                                                                                        Actual
+                                                                 Objective     Max Abs                     and
+                     Function         Active        Objective     Function    Gradient               Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Lambda       Change
+
+   1            0           6              0        176196797     18468113    26018815     0.0241        0.860
+   2            0           8              0        169591168      6605630    14508540      0.107        0.765
+   3            0           9              0        169274174       316993     4780321     0.0226       0.0627
+   4*           0          10              0        166411580      2862594     7823890     0.0638        1.035
+   5            0          15              0        164390250      2021330     3270817     309224        0.838
+   6            0          16              0        164386880       3370.3     3250381      797.9        1.000
+   7            0          17              0        164380198       6681.7     3209482      394.7        0.999
+   8            0          18              0        164367062      13136.3     3127534      192.9        0.998
+   9            0          19              0        164341627      25434.4     2962662     91.815        0.996
+  10            0          20              0        164270279      71348.7     2448142     25.449        0.984
+  11            0          21              0        164166329       103950     1494558      9.552        0.960
+  12            0          22              0        164050252       116077     1196440      2.040        0.887
+  13            0          23              0        163899525       150728      973093      0.387        0.956
+  14            0          24              0        163644415       255110      789856      0.160        1.025
+  15            0          25              0        163214549       429866     1015496     0.0683        1.012
+  16            0          26              0        162417282       797267     2648463     0.0135        0.871
+  17            0          27              0        162086567       330715     6921591    0.00422        0.319
+  18            0          28              0        160822772      1263795     4980957    0.00366        0.804
+  19            0          29              0        159853991       968781     1894802    0.00081        0.765
+  20            0          31              0        159393735       460256     1358780    0.00031        0.964
+  21            0          33              0        159217227       176508      604249    0.00332        0.917
+  22            0          35              0        159196828      20399.3      687933     0.0266        0.299
+  23            0          36              0        159172149      24679.3      641302     0.0348        0.347
+  24            0          37              0        159124238      47910.5      650459     0.0431        0.560
+  25            0          38              0        159086649      37589.3      532095     0.0469        0.463
+  26            0          39              0        159065161      21487.8      599529     0.0239        0.387
+  27            0          40              0        159050255      14905.6      513675     0.0250        0.290
+  28            0          41              0        159031798      18457.0      598136     0.0255        0.324
+  29            0          42              0        159018120      13678.8      518158     0.0247        0.260
+  30            0          43              0        159000725      17394.7      595382     0.0263        0.293
+  31            0          44              0        158987820      12905.0      521343     0.0244        0.239
+  32            0          45              0        158971052      16767.6      590909     0.0268        0.273
+  33            0          46              0        158958715      12337.5      521104     0.0241        0.224
+  34            0          47              0        158942438      16276.1      583998     0.0270        0.259
+  35            0          48              0        158930547      11891.9      517247     0.0237        0.214
+  36            0          49              0        158914736      15810.2      574673     0.0270        0.248
+  37            0          50              0        158903208      11528.7      510099     0.0233        0.207
+  38            0          51              0        158887880      15327.7      563187     0.0269        0.238
+  39            0          52              0        158876652      11227.4      500073     0.0229        0.202
+  40            0          53              0        158861841      14811.5      549834     0.0268        0.230
+  41            0          54              0        158850864      10976.9      487557     0.0224        0.198
+  42            0          55              0        158836610      14254.4      534896     0.0267        0.221
+  43            0          56              0        158825838      10771.5      472914     0.0220        0.195
+  44            0          57              0        158812185      13653.2      518650     0.0265        0.212
+
+                                            Optimization Results
+
+Iterations                                         44  Function Calls                                     59
+Jacobian Calls                                     46  Active Constraints                                  0
+Objective Function                       158812184.99  Max Abs Gradient Element                 518649.58714
+Lambda                                   0.0264639015  Actual Over Pred Change                  0.2123500277
+Radius                                   970.00231916                                                       
+
+Convergence criterion (FCONV=0.0001) satisfied.                                                   
+
+NOTE: At least one element of the gradient is greater than 1e-3.
+
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+                     Optimization Results
+                      Parameter Estimates
+                                                      Gradient
+                                                     Objective
+  N Parameter                         Estimate        Function
+
+  1 Adjusted_Quota_H11               -2.043912           45178
+  2 Adjusted_Quota_H12               -9.453125          518650
+  3 Adjusted_Quota_H13               -7.916794           37787
+  4 vehicle_classCategoryB_H11        1.590663          -49271
+  5 vehicle_classCategoryB_H12        8.628612          121143
+  6 vehicle_classCategoryB_H13        1.003754     6433.202214
+  7 BIAS_H11                          0.522497          108130
+  8 BIAS_H12                         10.459559          286824
+  9 BIAS_H13                         -5.442049           12462
+ 10 H11_Adj_Prem                         13316       -4.478711
+ 11 H12_Adj_Prem                  -5948.744492       10.614756
+ 12 H13_Adj_Prem                         10414      -10.946374
+ 13 BIAS_Adj_Prem                        67312        4.011319
+
+Value of Objective Function = 158812184.99
+

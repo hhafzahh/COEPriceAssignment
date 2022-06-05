@@ -1,0 +1,224 @@
+*------------------------------------------------------------*
+* Report Log
+Date:                04,June,2022
+Time:                21:12:12
+*------------------------------------------------------------*
+12341  data EMWS1.Neural2_EMOUTFIT(rename=(_NAME_=TARGET));
+12342  set EMWS1.Neural2_OUTFIT(where=(_NAME_ eq 'OVERALL'));
+12343  label _NAME_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_target_vlabel  , NOQUOTE))";
+12344  if _NAME_='OVERALL' then _NAME_='Adj_Prem';
+12345  drop _ITER_;
+12346  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL2_OUTFIT.
+      WHERE _NAME_='OVERALL';
+NOTE: The data set EMWS1.NEURAL2_EMOUTFIT has 1 observations and 45 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12347  proc sort data=EMWS1.Neural2_EMOUTFIT nodupkey;
+12348  by TARGET;
+12349  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL2_EMOUTFIT.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: The data set EMWS1.NEURAL2_EMOUTFIT has 1 observations and 45 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+12350  data EMWS1.Neural2_EMOUTFIT;
+12351  set EMWS1.Neural2_EMOUTFIT;
+12352  length TargetLabel $200;
+12353  label targetLabel = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+12354  run;
+
+NOTE: Variable TargetLabel is uninitialized.
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL2_EMOUTFIT.
+NOTE: The data set EMWS1.NEURAL2_EMOUTFIT has 1 observations and 46 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.01 seconds
+      
+
+12355  proc sort data=EMWS1.Neural2_EMREPORTFIT nothreads;
+12356  by TARGET;
+12357  run;
+
+NOTE: There were 21 observations read from the data set EMWS1.NEURAL2_EMREPORTFIT.
+NOTE: The data set EMWS1.NEURAL2_EMREPORTFIT has 21 observations and 7 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12358  %let _EMwarndup = 0;
+12359  %let _EMtargetdup =;
+12360  %let _EMASEtargetdup =;
+12361  data _null_;
+12362  set EMWS1.Neural2_EMOUTFIT;
+12363  if .<_ASE_<0.000001 then do;
+12364  call symput('_EMwarndup', '1');
+12365  call symput('_EMtargetdup', target);
+12366  call symput('_EMASEtargetdup', put(_ASE_, best.));
+12367  end;
+12368  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL2_EMOUTFIT.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12369  proc sort data=EMWS1.Part_CMeta_TRAIN out=WORK.SUBSETINMETA;
+12370  by NAME;
+12371  run;
+
+NOTE: There were 5 observations read from the data set EMWS1.PART_CMETA_TRAIN.
+NOTE: The data set WORK.SUBSETINMETA has 5 observations and 20 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12372  proc sort data=EMWS1.Neural2_VariableSet out=WORK.SUBSETVARSET(keep=NAME REPORT);
+12373  by NAME;
+12374  run;
+
+NOTE: There were 3 observations read from the data set EMWS1.NEURAL2_VARIABLESET.
+NOTE: The data set WORK.SUBSETVARSET has 3 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12375  data WORK.ASSESS_META;
+12376  merge WORK.SUBSETINMETA WORK.SUBSETVARSET;
+12377  by NAME;
+12378  run;
+
+NOTE: There were 5 observations read from the data set WORK.SUBSETINMETA.
+NOTE: There were 3 observations read from the data set WORK.SUBSETVARSET.
+NOTE: The data set WORK.ASSESS_META has 5 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+12379  data EM_temp_assessMeta;
+12380  set EMWS1.Neural2_CMeta_TRAIN;
+12381  where role in('DECISION', 'PREDICT', 'RESIDUAL', 'CLASSIFICATION', 'ASSESS', 'COST');
+12382  run;
+
+NOTE: There were 3 observations read from the data set EMWS1.NEURAL2_CMETA_TRAIN.
+      WHERE role in ('ASSESS', 'CLASSIFICATION', 'COST', 'DECISION', 'PREDICT', 'RESIDUAL');
+NOTE: The data set WORK.EM_TEMP_ASSESSMETA has 3 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12383  data EM_temp_assessdata;
+12384  set EMWS1.Neural2_TRAIN(keep=
+12385  P_Adj_Prem
+12386  R_Adj_Prem
+12387  _WARN_
+12388  Adj_Prem
+12389  );
+12390  run;
+
+NOTE: View EMWS1.NEURAL2_TRAIN.VIEW used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+      
+NOTE: There were 409 observations read from the data set EMWS1.PART_TRAIN.
+NOTE: There were 409 observations read from the data set EMWS1.NEURAL2_TRAIN.
+NOTE: The data set WORK.EM_TEMP_ASSESSDATA has 409 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.11 seconds
+      cpu time            0.10 seconds
+      
+
+
+
+
+
+
+
+
+16721  %let _cn = %sysfunc(getoption(CENTER));
+16722  options nocenter;
+16723  proc print data=EMWS1.Neural2_EMREPORTFIT noobs label;
+16724  var STAT LABEL TRAIN
+16725  TEST
+16726  ;
+16727  by TARGET TARGETLABEL;
+16728  title9 ' ';
+16729  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_fitstat_title  , NOQUOTE))";
+16730  run;
+
+NOTE: There were 21 observations read from the data set EMWS1.NEURAL2_EMREPORTFIT.
+NOTE: The PROCEDURE PRINT printed page 7.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+16731  title10;
+16732  options &_cn;
+
+16733  proc datasets library=EMWS1 nolist;
+16734  modify Neural2_EMRANK;
+16735  label target = "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel ,   NOQUOTE))";
+16736  label datarole = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel ,    NOQUOTE))";
+16737  run;
+
+NOTE: MODIFY was successful for EMWS1.NEURAL2_EMRANK.DATA.
+16738  quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+16739  %let _cn = %sysfunc(getoption(CENTER));
+16740  options nocenter;
+16741  proc print data=EMWS1.Neural2_EMRANK label noobs;
+16742  var
+16743  decile N _targetMean_ _meanP_;
+16744  by
+16745  notsorted DATAROLE
+16746  notsorted TARGET
+16747  notsorted TARGETLABEL
+16748  ;
+16749  title9 ' ';
+16750  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_scoreranking_title , NOQUOTE))";
+16751  run;
+
+NOTE: There were 20 observations read from the data set EMWS1.NEURAL2_EMRANK.
+NOTE: The PROCEDURE PRINT printed page 8.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+16752  title10;
+16753  options &_cn;
+
+16754  proc datasets library=EMWS1 nolist;
+16755  modify Neural2_EMSCOREDIST;
+16756  label target = "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel ,      NOQUOTE))";
+16757  label datarole = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel ,    NOQUOTE))";
+16758  run;
+
+NOTE: MODIFY was successful for EMWS1.NEURAL2_EMSCOREDIST.DATA.
+16759  quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+

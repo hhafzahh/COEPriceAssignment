@@ -1,0 +1,103 @@
+*------------------------------------------------------------*
+* Score Log
+Date:                04,June,2022
+Time:                21:28:04
+*------------------------------------------------------------*
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.
+11253  data work.outkey;
+11254  set EMWS1.Neural7_OUTKEY;
+11255  if upcase(ROLE) = 'HIDDEN';
+11256  run;
+
+NOTE: There were 14 observations read from the data set EMWS1.NEURAL7_OUTKEY.
+NOTE: The data set WORK.OUTKEY has 3 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11257  filename emflow "C:\Users\2001231F\Desktop\Predictive\Workspaces\EMWS1\Neural7\EMFLOWSCORE.sas";
+11258  *------------------------------------------------------------*;
+11259  * Neural7: Scoring DATA data;
+11260  *------------------------------------------------------------*;
+11261  data EMWS1.Neural7_TRAIN
+11262  / view=EMWS1.Neural7_TRAIN
+11263  ;
+11264  set EMWS1.Part4_TRAIN
+11265  ;
+11266  %inc emflow;
+11469  run;
+
+NOTE: DATA STEP view saved on file EMWS1.NEURAL7_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+11470  quit;
+11471  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+11472  filename emflow "C:\Users\2001231F\Desktop\Predictive\Workspaces\EMWS1\Neural7\EMFLOWSCORE.sas";
+11473  *------------------------------------------------------------*;
+11474  * Neural7: Scoring TEST data;
+11475  *------------------------------------------------------------*;
+11476  data EMWS1.Neural7_TEST
+11477  / view=EMWS1.Neural7_TEST
+11478  ;
+11479  set EMWS1.Part4_TEST
+11480  ;
+11481  %inc emflow;
+11684  run;
+
+NOTE: DATA STEP view saved on file EMWS1.NEURAL7_TEST.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11685  quit;
+11686  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+11687  *------------------------------------------------------------*;
+11688  * Neural7: Computing metadata for TRAIN data;
+11689  *------------------------------------------------------------*;
+
+NOTE: View EMWS1.NEURAL7_TRAIN.VIEW used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+      
+12034  data EMWS1.Neural7_EMINFO;
+12035  length TARGET KEY $32 DATA $43;
+12036  input TARGET KEY DATA $;
+12037  cards;
+
+NOTE: The data set EMWS1.NEURAL7_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12041  run;
+12042  proc sort data = EMWS1.Neural7_EMINFO NOTHREADS;
+12043  by TARGET KEY;
+12044  run;
+
+NOTE: There were 3 observations read from the data set EMWS1.NEURAL7_EMINFO.
+NOTE: The data set EMWS1.NEURAL7_EMINFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: View EMWS1.NEURAL7_TRAIN.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+      
+NOTE: View EMWS1.NEURAL7_TEST.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+      

@@ -1,0 +1,312 @@
+*------------------------------------------------------------*
+* Score Log
+Date:                04,June,2022
+Time:                22:39:29
+*------------------------------------------------------------*
+NOTE: View EMWS1.NEURAL2_TRAIN.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+NOTE: View EMWS1.NEURAL2_TRAIN.VIEW used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.10 seconds
+      
+11711  /* Generate assessment metadata, which will be used to generate assessment data step */
+11712  /* code, such as retrieving names of temporary variables and summary variables,      */
+11713  /* labels, etc.  It is used in almost all the assessment computations such as lift,  */
+11714  /* roc, index, scoreDist and could be thought as a global variable in assessment     */
+11715  /* computation.                                                                      */
+11716  data work.ASSESS_09R_4LJ_assessMeta_X3OsAV;
+11717  length VARIABLE $32 FORMAT $44 TYPE $32 PARENT $32 LEVEL $32 PROPERTY $32 MEASUREMENT $10 LAST_LEVEL $32 GEN_VAR_IN_TEMP_DATA $32 RESULT_MEAN $32 RESULT_MEAN_LABEL $100 RESULT_MIN $32 RESULT_MIN_LABEL $100 MIN_ADJUSTED $32 RESULT_MAX $32
+11717! RESULT_MAX_LABEL
+11718     $100 MAX_ADJUSTED $32 RESULT_COUNT $32 RESULT_COUNT_LABEL $100 TEMPORARY_VARIABLE $32;
+11719  VARIABLE = "Adj_Prem";
+11720  PARENT = "";
+11721  FORMAT = "";
+11722  TYPE = "";
+11723  LEVEL = '';
+11724  PROPERTY = "TARGET";
+11725  MEASUREMENT = "INTERVAL";
+11726  LAST_LEVEL = '';
+11727  GEN_VAR_IN_TEMP_DATA = "Adj_Prem";
+11728  RESULT_MEAN = "_targetMean_";
+11729  RESULT_MEAN_LABEL = "%sysfunc(sasmsg(sashelp.dmine, assmt_trgtMean_vlabel, NOQUOTE))";
+11730  RESULT_MIN = "_targetMin_";
+11731  RESULT_MIN_LABEL = "%sysfunc(sasmsg(sashelp.dmine, assmt_trgtMin_vlabel, NOQUOTE))";
+11732  MIN_ADJUSTED = "Adj_Prem_minAdjusted_YWnEFmY50";
+11733  RESULT_MAX = "_targetMax_";
+11734  RESULT_MAX_LABEL = "%sysfunc(sasmsg(sashelp.dmine, assmt_trgtMax_vlabel, NOQUOTE))";
+11735  MAX_ADJUSTED = "Adj_Prem_maxAdjusted_JrzQ_CPQD";
+11736  RESULT_COUNT = "";
+11737  RESULT_COUNT_LABEL = "";
+11738  TEMPORARY_VARIABLE = "Adj_Prem_A8yEhrtS7JZE701";
+11739  output;
+11740  VARIABLE = "P_Adj_Prem";
+11741  FORMAT = "";
+11742  TYPE = "";
+11743  PARENT = "";
+11744  LEVEL = "";
+11745  PROPERTY = "PREDICTED";
+11746  MEASUREMENT = "INTERVAL";
+11747  LAST_LEVEL = "";
+11748  GEN_VAR_IN_TEMP_DATA = "P_Adj_Prem";
+11749  RESULT_MEAN = "_meanP_";
+11750  RESULT_MEAN_LABEL = "%sysfunc(sasmsg(sashelp.dmine, assmt_predMean_vlabel, NOQUOTE))";
+11751  RESULT_MIN = "_minP_";
+11752  RESULT_MIN_LABEL = "%sysfunc(sasmsg(sashelp.dmine, assmt_predMin_vlabel, NOQUOTE))";
+11753  MIN_ADJUSTED = "P_Adj_Pr_minAdjusted_tGT0wRJ2O";
+11754  RESULT_MIN_LABEL = "%sysfunc(sasmsg(sashelp.dmine, assmt_predMin_vlabel, NOQUOTE))";
+11755  RESULT_MAX = "_maxP_";
+11756  RESULT_MAX_LABEL = "%sysfunc(sasmsg(sashelp.dmine, assmt_predMax_vlabel, NOQUOTE))";
+11757  MAX_ADJUSTED = "max_adjusted";
+11758  RESULT_COUNT = "";
+11759  RESULT_COUNT_LABEL = "";
+11760  TEMPORARY_VARIABLE = "P_Adj_Prem_lqZm0FFYsgDWVmw";
+11761  output;
+11762  run;
+
+NOTE: The data set WORK.ASSESS_09R_4LJ_ASSESSMETA_X3OSAV has 2 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11763  /* Generate temporary dataset and obtain summary statistics such as total number of   */
+11764  /* obserations, frequency of target.  However, summary statistics for class reporting */
+11765  /* variabels are not computed here since if there exist class reporting variables,    */
+11766  /* then PROC DMDB will be called. And there is no need to compute interval reporting  */
+11767  /* summary statisitcs, if any.                                                        */
+11768  data work.ASSESS_09R_4LJ_normSD_yS91Dh(drop=
+11769  _numberOfObservation_
+11770  _intervalTargetMin_ _intervalTargetMax_
+11771  )
+11772  work.ASSESS_09R_4LJ_meansAndTi_RgoM2T (keep=
+11773  _numberOfObservation_
+11774  _intervalTargetMin_ _intervalTargetMax_
+11775  );
+11776  set EMWS1.Neural2_TRAIN(
+11777  where=(
+11778  (Adj_Prem ^= .)
+11779  and (P_Adj_Prem ^= .)
+11780  )
+11781  ) end=_lastObservation_;
+11782  keep frequency_VCz8TM;
+11783  frequency_VCz8TM = 1;
+11784  keep Adj_Prem;
+11785  keep P_Adj_Prem;
+11786  output work.ASSESS_09R_4LJ_normSD_yS91Dh;
+11787  keep _numberOfObservation_;
+11788  retain _numberOfObservation_ 0;
+11789  _numberOfObservation_ + frequency_VCz8TM;
+11790  keep _intervalTargetMin_ _intervalTargetMax_;
+11791  retain _intervalTargetMin_ .;
+11792  retain _intervalTargetMax_ .;
+11793  if (_n_ = 1) then do;
+11794  _intervalTargetMin_ = P_Adj_Prem;
+11795  _intervalTargetMax_ = P_Adj_Prem;
+11796  end;
+11797  else do;
+11798  if (_intervalTargetMin_ > P_Adj_Prem) then do;
+11799  _intervalTargetMin_ = P_Adj_Prem;
+11800  end;
+11801  if (_intervalTargetMax_ < P_Adj_Prem) then do;
+11802  _intervalTargetMax_ = P_Adj_Prem;
+11803  end;
+11804  end;
+11805  if _lastObservation_ then do;
+11806  output work.ASSESS_09R_4LJ_meansAndTi_RgoM2T;
+11807  end;
+11808  run;
+
+NOTE: View EMWS1.NEURAL2_TRAIN.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+NOTE: There were 409 observations read from the data set EMWS1.PART_TRAIN.
+NOTE: There were 409 observations read from the data set EMWS1.NEURAL2_TRAIN.
+      WHERE (Adj_Prem not = .) and (P_Adj_Prem not = .);
+NOTE: The data set WORK.ASSESS_09R_4LJ_NORMSD_YS91DH has 409 observations and 3 variables.
+NOTE: The data set WORK.ASSESS_09R_4LJ_MEANSANDTI_RGOM2T has 1 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+      
+
+11809  data WORK._EMRANK;
+11810  set EMWS1.MdlComp_EMRANK;
+11811  where MODEL = "Neural2" and TARGET = "Adj_Prem" and dataRole="TRAIN";
+11812  run;
+
+NOTE: There were 20 observations read from the data set EMWS1.MDLCOMP_EMRANK.
+      WHERE (MODEL='Neural2') and (TARGET='Adj_Prem') and (dataRole='TRAIN');
+NOTE: The data set WORK._EMRANK has 20 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11813  data work._augment;
+11814  do BIN= 1 to 20;
+11815  DECILE = BIN*5;
+11816  output;
+11817  end;
+11818  run;
+
+NOTE: The data set WORK._AUGMENT has 20 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11819  data WORK._EMRANK;
+11820  merge WORK._AUGMENT WORK._EMRANK;
+11821  by BIN;
+11822  run;
+
+NOTE: There were 20 observations read from the data set WORK._AUGMENT.
+NOTE: There were 20 observations read from the data set WORK._EMRANK.
+NOTE: The data set WORK._EMRANK has 20 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11823  data WORK._EMRANK;
+11824  set WORK._EMRANK end=_lastObservation_;
+11825  retain _previousMinP_ _previousMaxP_;
+11826  retain _group_ 1;
+11827  keep bin _cutoff_ _group_;
+11828  if (bin > 1) then do;
+11829  bin = bin - 1;
+11830  _cutoff_ = (_maxP_ + _previousMinP_) / 2;
+11831  if (abs(_previousMaxP_ - _previousMinP_) < 1E-6) then do;
+11832  /* tied */
+11833  _cutoff_ = max((_minP_ + _maxP_)/2, min(_cutoff_, _previousMinP_/*-1E-6*/
+11834  ));
+11835  end;
+11836  else if (abs(_maxP_ - _minP_) < 1E-6) then do;
+11837  /* next tied */
+11838  _cutoff_ = min((_previousMinP_ + _previousMaxP_)/2, max(_cutoff_, _maxP_/*+ 1E-6*/
+11839  ));
+11840  end;
+11841  output;
+11842  *if ( abs((_maxP_ +_minP_)/2 - (_previousMaxP_ + _previousMinP_)/2) > 1E-6) then do;
+11843  * _group_ + 1;
+11844  *end;
+11845  if (_maxP_ le _previousMinP_ - 1E-6) then do;
+11846  _group_ + 1;
+11847  end;
+11848  else if (abs(_maxP_ - _previousMinP_) < 1E-6) then do;
+11849  if (abs(_maxP_ - _minP_) > 1E-6) then do;
+11850  _group_ + 1;
+11851  end;
+11852  end;
+11853  bin + 1;
+11854  /* correct the previous change */
+11855  end;
+11856  if (_lastObservation_) then do;
+11857  _cutoff_ = .;
+11858  output;
+11859  end;
+11860  _previousMinP_ = _minP_;
+11861  _previousMaxP_ = _maxP_;
+11862  run;
+
+NOTE: There were 20 observations read from the data set WORK._EMRANK.
+NOTE: The data set WORK._EMRANK has 20 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11863  data WORK._EMRANK;
+11864  set WORK._EMRANK;
+11865  by _group_;
+11866  retain _start_;
+11867  if (first._group_) then do;
+11868  _start_ = _n_;
+11869  end;
+11870  if (last._group_) then do;
+11871  _end_ = _n_;
+11872  output;
+11873  end;
+11874  run;
+
+NOTE: There were 20 observations read from the data set WORK._EMRANK.
+NOTE: The data set WORK._EMRANK has 20 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.
+11875  filename emflow "C:\Users\2001231F\Desktop\Predictive\Workspaces\EMWS1\MdlComp\EMFLOWSCORE.sas";
+11876  *------------------------------------------------------------*;
+11877  * MdlComp: Scoring NEURAL2_TRAIN data;
+11878  *------------------------------------------------------------*;
+11879  data EMWS1.MdlComp_TRAIN
+11880  / view=EMWS1.MdlComp_TRAIN
+11881  ;
+11882  set EMWS1.Neural2_TRAIN
+11883  ;
+11884  %inc emflow;
+11964  run;
+
+NOTE: DATA STEP view saved on file EMWS1.MDLCOMP_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.NEURAL2_TRAIN.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.06 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.06 seconds
+      
+
+11965  quit;
+11966  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+11967  filename emflow "C:\Users\2001231F\Desktop\Predictive\Workspaces\EMWS1\MdlComp\EMFLOWSCORE.sas";
+11968  *------------------------------------------------------------*;
+11969  * MdlComp: Scoring NEURAL2_TEST data;
+11970  *------------------------------------------------------------*;
+11971  data EMWS1.MdlComp_TEST
+11972  / view=EMWS1.MdlComp_TEST
+11973  ;
+11974  set EMWS1.Neural2_TEST
+11975  ;
+11976  %inc emflow;
+12056  run;
+
+NOTE: DATA STEP view saved on file EMWS1.MDLCOMP_TEST.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.NEURAL2_TEST.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+      
+
+12057  quit;
+12058  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+12059  *------------------------------------------------------------*;
+12060  * MdlComp: Computing metadata for TRAIN data;
+12061  *------------------------------------------------------------*;
+
+NOTE: View EMWS1.MDLCOMP_TRAIN.VIEW used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.12 seconds
+      
+NOTE: View EMWS1.MDLCOMP_TRAIN.VIEW used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+      
+NOTE: View EMWS1.MDLCOMP_TEST.VIEW used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.11 seconds
+      

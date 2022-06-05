@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  Predicted="AVERAGE" Posterior="MAX" VotingPosterior="AVERAGE" ForceRun="N" RunAction="Train"
+ Component="Ensemble" RawCreateTime="1969998398.7" CreateTime="04JUN2022:21:46:39"
+ RunId="f0bc3557-0f47-427e-9864-9307960ce372" RawLastTimeRun="1969998537.6" RawRunTime="7.4680001736"
+ LastTimeRun="04JUN2022:21:48:58" RunTime="0 Hr. 0 Min. 7.47 Sec.">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES ><![CDATA[
+EMNOTES
+]]>
+</FILEPROPERTIES><EMTARGETATTRIBUTES/>
+</_ROOT_>

@@ -1,0 +1,25 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+          Measurement    Frequency
+ Role        Level         Count
+
+INPUT      INTERVAL          1    
+INPUT      NOMINAL           1    
+TARGET     INTERVAL          1    
+TIMEID     INTERVAL          1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Partition Summary
+
+                                  Number of
+Type          Data Set          Observations
+
+DATA     EMWS2.FIMPORT_TRAIN         292    
+TRAIN    EMWS2.Part_TRAIN            204    
+TEST     EMWS2.Part_TEST              88    

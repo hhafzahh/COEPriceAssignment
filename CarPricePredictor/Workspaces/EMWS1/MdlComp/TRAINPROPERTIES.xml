@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  NumberOfReportedLevels="1E-6" NormalizeReportingVariables="Y" DecileBin="20" LiftEpsilon="1E-6"
+ ProfitEpsilon="1E-6" RoiEpsilon="1E-6" ScoreDistBin="20" RocChart="Y" RocEpsilon="0.01"
+ AssessAllTargetLevels="N" SelectionData="DEFAULT" HPCriteria="DEFAULT" SelectionTable="TEST"
+ SelectionCriteria="_ASE_" SelectionDepth="10" NumberofBins="20" RecomputeAssess="N"
+ TargetName="Adj_Prem" ModelId="Neural2" ModelDescription="ANN w Settings" ModelCriteria="Test: Average Squared Error"
+ ForceRun="N" RunAction="Train" Component="ModelCompare" RawCreateTime="1969995923.2"
+ CreateTime="04JUN2022:21:05:23" RunId="39f8b177-1e92-44e7-ada7-633e15f5ed23" StatisticUsed="_TASE_"
+ TargetLabel="" RawLastTimeRun="1970001561.3" RawRunTime="10" LastTimeRun="04JUN2022:22:39:21"
+ RunTime="0 Hr. 0 Min. 10.00 Sec.">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES/>
+</_ROOT_>
